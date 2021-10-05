@@ -1,0 +1,30 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata:
+  name: host-project
+  annotations:
+    blueprints.cloud.google.com/title: Shared VPC Host Project blueprint
+upstream:
+  type: git
+  git:
+    repo: https://github.com/GoogleCloudPlatform/blueprints
+    directory: /catalog/networking/shared-vpc
+    ref: main
+  updateStrategy: resource-merge
+upstreamLock:
+  type: git
+  git:
+    repo: https://github.com/GoogleCloudPlatform/blueprints
+    directory: /catalog/networking/shared-vpc
+    ref: main
+    commit: 5fc18f42d6b060185b87bc6eecf9cf7d3ca6e1e4
+info:
+  description: |
+    Configures a project as the Host project for a Shared VPC.
+
+    Creation of a Shared VPC requires **compute.organizations.enableXpnHost**
+    permission on the org. This permission can only be granted by an org admin.
+pipeline:
+  mutators:
+    - image: gcr.io/kpt-fn/apply-setters:v0.1
+      configPath: setters.yaml

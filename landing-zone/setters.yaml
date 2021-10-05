@@ -1,0 +1,29 @@
+# Copyright 2021 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: v1
+kind: ConfigMap
+metadata: # kpt-merge: /setters
+  name: setters
+data:
+  # Organization ID and billing accounts
+  org-id: "396496977015"
+  billing-account-id: 011552-7DA53C-81003E
+  # Groups to use for org-level roles
+  group-org-admins: gcp-org-admins@rickruguichen.altostrat.com
+  group-billing-admins: gcp-billing-admins@rickruguichen.altostrat.com
+  # The project where Config Controller is deployed
+  management-project-id: rick-multi-tenancy
+  # This default is safe to keep
+  management-namespace: config-control

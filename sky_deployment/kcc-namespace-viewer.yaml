@@ -18,7 +18,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: cnrm-project-viewer-sky-team-name # kpt-set: cnrm-project-viewer-${sky-team-name}
-  namespace: hierachy #
+  namespace: hierarchy 
 roleRef:
   name: cnrm-viewer
   kind: ClusterRole

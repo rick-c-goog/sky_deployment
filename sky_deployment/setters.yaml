@@ -4,5 +4,5 @@ metadata: # kpt-merge: /setters
   name: setters
 data:
   sky-team-name:
-  landing-zone-folder-id:
+  landing-zone-folder-id: 
   management-project-id:

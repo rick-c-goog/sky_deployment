@@ -24,7 +24,7 @@ spec:
   resourceRef:
     apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
     kind: Folder
-    namespace: hierachy
+    namespace: hierarchy
     name: sky-team-name  # kpt-set: ${sky-team-name}
 
   bindings:

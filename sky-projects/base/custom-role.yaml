@@ -15,7 +15,7 @@ spec:
       - storage.buckets.get
       - storage.buckets.list
     stage: GA
-  ---
+---
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPolicyMember
 metadata:
@@ -30,7 +30,7 @@ spec:
       apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
       kind: Project
       external: projects/project-id # kpt-set: projects/${project-id}
-  ---
+---
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMServiceAccount
 metadata:

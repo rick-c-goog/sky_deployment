@@ -7,6 +7,7 @@ metadata:
       # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
       cnrm.cloud.google.com/disable-dependent-services: "false"
     name: logging.googleapis.com
+    namespace: project-id # kpt-set: ${project-id}
     
 ---
 apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
@@ -18,4 +19,5 @@ metadata:
       # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
       cnrm.cloud.google.com/disable-dependent-services: "false"
     name: monitoringe.googleapis.com
+    namespace: project-id # kpt-set: ${project-id}
 # To DO: append other service API needs to be enabled

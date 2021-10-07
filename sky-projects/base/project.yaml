@@ -24,6 +24,5 @@ spec:
   billingAccountRef:
     external: "AAAAAA-BBBBBB-CCCCCC" # kpt-set: ${billing-account-id}
   folderRef:
-    name: name.of.folder # kpt-set: ${folder-name}
-    namespace: hierarchy # kpt-set: ${folder-namespace}
----
+    name: name.of.folder # kpt-set: ${sky-team-name}
+    namespace: hierarchy 

@@ -8,7 +8,7 @@ apiVersion: iam.cnrm.cloud.google.com/v1beta1
   kind: IAMAuditConfig
   metadata:
     name: iam-auditconfig-project
-    namespace: project_id # kpt-set: ${project-id}
+    namespace: project-id # kpt-set: ${project-id}
   spec:
     service: allServices
     auditLogConfigs:

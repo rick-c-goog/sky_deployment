@@ -1,6 +1,6 @@
 apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
-  kind: Service
-  metadata:
+kind: Service
+metadata:
     annotations:
       # use the deletion policy of abandon to ensure that the pubsub service remains enabled when this resource is deleted.
       cnrm.cloud.google.com/deletion-policy: "abandon"
@@ -11,8 +11,8 @@ apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
       external: "projects/project_id" # kpt-set: projects/${project-id}
   ---
 apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
-  kind: Service
-  metadata:
+kind: Service
+metadata:
     annotations:
       # use the deletion policy of abandon to ensure that the pubsub service remains enabled when this resource is deleted.
       cnrm.cloud.google.com/deletion-policy: "abandon"

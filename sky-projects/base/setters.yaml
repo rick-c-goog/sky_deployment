@@ -5,8 +5,7 @@ metadata:
 data:
   project-id: project-id
   # These defaults can be kept
-  sky-team-name: 
-  management-project-id: 
-  billing-account-id: 
+  sky-team-name: test
+  
 
 

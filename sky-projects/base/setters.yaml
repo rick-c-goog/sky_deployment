@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: # kpt-merge: /setters
+  name: setters
+data:
+  project-id: project-id
+  # These defaults can be kept
+  sky-team-name: 
+  management-project-id: 
+  billing-account-id: 
+
+

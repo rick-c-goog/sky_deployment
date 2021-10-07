@@ -1,0 +1,39 @@
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+  kind: IAMCustomRole
+  metadata:
+    annotations:
+      # Replace ${PROJECT_ID?} with your project ID
+      cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
+    name: dev-custom-role
+    namespace: project-id # kpt-set: ${project-id}
+  spec:
+    title: This Project-Level Dev Custom Role
+    description: This role only contains dev relatd permissions
+    permissions:
+      - iam.roles.get
+      - iam.roles.list
+      - storage.buckets.get
+      - storage.buckets.list
+    stage: GA
+  ---
+  apiVersion: iam.cnrm.cloud.google.com/v1beta1
+  kind: IAMPolicyMember
+  metadata:
+    name: iampolicymember-dev-custom-role-sa
+    namespace: project-id # kpt-set: ${project-id}
+  spec:
+    # Replace ${PROJECT_ID?} with your project ID
+    member: serviceAccount:dev-sa@project-id.iam.gserviceaccount.com # kpt-set: dev@${project-id}.iam.gserviceaccount.com
+    # Replace ${PROJECT_ID?} with your project ID
+    role: projects/project-id/roles/dev-custom-role # kpt-set: projects/${project-id}/roles/dev-custom-role
+    resourceRef:
+      apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
+      kind: Project
+      external: projects/project-id # kpt-set: projects/${project-id}
+  ---
+  apiVersion: iam.cnrm.cloud.google.com/v1beta1
+  kind: IAMServiceAccount
+  metadata:
+    name: dev-sa
+    namespace: project-id # kpt-set: ${project-id}
+ 

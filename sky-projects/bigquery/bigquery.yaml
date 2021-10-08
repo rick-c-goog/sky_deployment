@@ -37,7 +37,7 @@ metadata:
 spec:
     description: "BigQuery Sample Table"
     datasetRef:
-      name: samplebigquerytable
+      name: bqlogexportdataset
     friendlyName: bigquerytable-sample
     externalDataConfiguration:
       autodetect: true

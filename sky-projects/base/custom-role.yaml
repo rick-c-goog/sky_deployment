@@ -25,7 +25,7 @@ spec:
     # Replace ${PROJECT_ID?} with your project ID
     member: serviceAccount:dev-sa@project-id.iam.gserviceaccount.com # kpt-set: dev@${project-id}.iam.gserviceaccount.com
     # Replace ${PROJECT_ID?} with your project ID
-    role: projects/project-id/roles/dev-custom-role # kpt-set: projects/${project-id}/roles/dev-custom-role
+    role: roles/dev-custom-role # kpt-set: projects/${project-id}/roles/dev-custom-role
     resourceRef:
       apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
       kind: Project

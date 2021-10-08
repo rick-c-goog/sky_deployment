@@ -13,18 +13,26 @@
 # limitations under the License.
 # Configure Anthos Config Management on Config Controller
 # Enable and configure Config Sync to watch a CSR repository.
+# config-management.yaml
 apiVersion: configmanagement.gke.io/v1
 kind: ConfigManagement
-metadata: # kpt-merge: /config-management
+metadata:
   name: config-management
 spec:
-  clusterName: krmapihost-config-controller-1 # kpt-set: ${cluster-name}
-  enableMultiRepo: false
+  enableMultiRepo: true
+---
+apiVersion: configsync.gke.io/v1beta1
+kind: RootSync
+metadata:
+  name: root-sync
+  namespace: config-management-system
+spec:
+  sourceFormat: unstructured
   git:
     gcpServiceAccountEmail: krmapihost-config-controller-1@rick-multi-tenancy.iam.gserviceaccount.com # kpt-set: ${cluster-name}@${project-id}.iam.gserviceaccount.com
-    policyDir: config # kpt-set: ${configsync-dir}
-    secretType: gcpserviceaccount
-    syncBranch: master
-    syncRepo: https://source.developers.google.com/p/rick-multi-tenancy/r/deployment-repo # kpt-set: https://source.developers.google.com/p/${project-id}/r/${deployment-repo}
-    syncRevision: HEAD
-  sourceFormat: unstructured
+    dir: config # kpt-set: ${configsync-dir}
+    auth: gcpserviceaccount
+    branch: master
+    repo: https://source.developers.google.com/p/rick-multi-tenancy/r/deployment-repo # kpt-set: https://source.developers.google.com/p/${project-id}/r/${deployment-repo}
+    revision: HEAD
+  

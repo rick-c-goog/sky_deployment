@@ -34,7 +34,7 @@ spec:
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPolicyMember
 metadata:
-    name: viewer-binding
+    name: data-viewer-binding
     namespace: project-id # kpt-set: ${project-id}
 spec:
     # Replace ${PROJECT_ID?} with your project ID

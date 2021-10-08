@@ -31,6 +31,8 @@ spec:
       - bigquery.tables.restoreSnapshot
       - bigquery.tables.update
       - bigquery.tables.updateData
+      - resourcemanager.projects.get
+      - resourcemanager.projects.list
     stage: GA
 
 ---
@@ -70,6 +72,8 @@ spec:
       - bigquery.capacityCommitments.get
       - bigquery.capacityCommitments.list
       - bigquery.config.get
+      - resourcemanager.projects.get
+      - resourcemanager.projects.list
     stage: GA
 ---
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
@@ -97,5 +101,7 @@ spec:
       - bigquery.tables.get
       - bigquery.tables.getData
       - bigquery.rowAccessPolicies.getFilteredData
+      - resourcemanager.projects.get
+      - resourcemanager.projects.list
     stage: GA
 ---

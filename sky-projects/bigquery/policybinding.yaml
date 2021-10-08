@@ -1,7 +1,7 @@
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPartialPolicy
 metadata: # kpt-merge: config-control/logging-sa-iam-permissions
-  name: owner-binding
+  name: data-admin-binding
   namespace: project-id # kpt-set: ${project-id}
   annotations:
     cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
@@ -11,18 +11,18 @@ spec:
     kind: Project
     external: projects/project-id # kpt-set: projects/${project-id}
   bindings:
-    - role: roles/owner
+    - role: roles/dataadminrole
       members:
-        - member: "serviceAccount:project-sa@project-id.iam.gserviceaccount.com" # kpt-set: serviceAccount:dev-sa@${project-id}.iam.gserviceaccount.com
+        - member: "group:data-admin-group" # kpt-set: group:${data-admin-group}
 ---
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPolicyMember
 metadata:
-    name: editor-binding
+    name: data-editor-binding
     namespace: project-id # kpt-set: ${project-id}
 spec:
     # Replace ${PROJECT_ID?} with your project ID
-    member: serviceAccount:editor-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:editor-sa@${project-id}.iam.gserviceaccount.com
+    member: "group:data-editor-group" # kpt-set: group:${data-admin-group}
     # Replace ${PROJECT_ID?} with your project ID
     resourceRef:
      apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
@@ -38,8 +38,7 @@ metadata:
     namespace: project-id # kpt-set: ${project-id}
 spec:
     # Replace ${PROJECT_ID?} with your project ID
-    member: serviceAccount:viewer-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:viewer-sa@${project-id}.iam.gserviceaccount.com
-    # Replace ${PROJECT_ID?} with your project ID
+    member: "group:data-viewer-group" # kpt-set: group:${data-viewer-group}  
     resourceRef:
      apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
      kind: Project

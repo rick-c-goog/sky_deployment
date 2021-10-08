@@ -4,37 +4,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # API Activation
-apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
-kind: Service
-metadata: # kpt-merge: projects/my-project-id-bigquery
-  name: my-project-id-bigquery # kpt-set: ${project-id}-bigquery
-  namespace: projects
-  annotations:
-    cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
-    cnrm.cloud.google.com/deletion-policy: "abandon"
-    cnrm.cloud.google.com/disable-dependent-services: "false"
-    cnrm.cloud.google.com/project-id: my-project-id # kpt-set: ${project-id}
-spec:
-  resourceID: bigquery.googleapis.com
----
-# Org Sink to BQ
-apiVersion: logging.cnrm.cloud.google.com/v1beta1
-kind: LoggingLogSink
-metadata: # kpt-merge: logging/123456789012-bqsink
-  name: 123456789012-bqsink # kpt-set: ${org-id}-bqsink
-  namespace: "${project_id}" # kpt-set: ${project-id}
-  annotations:
-    cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
-spec:
-  destination:
-    bigQueryDatasetRef:
-      name: bqlogexportdataset
-  filter: "" # kpt-set: ${filter}
-  includeChildren: true
-  projectRef:
-      name: project-id # kpt-set: ${project-id}
-  uniqueWriterIdentity: true
----
+
 # BQ Dataset
 apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
 kind: BigQueryDataset
@@ -51,9 +21,30 @@ spec:
   friendlyName: audit-logs # kpt-set: ${dataset-name}
   location: US # kpt-set: ${dataset-location}
   access:
-  - groupByEmail: 
-  - role: 
+  - role: roles/dataeditorrole
   defaultEncryptionConfiguration:
     kmsKeyRef:
       name: bq-ds-key
       namespace: project-id # kpt-set: ${project-id}
+---
+apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
+kind: BigQueryTable
+metadata:
+    name: bigquerytablesample
+    labels:
+      data-source: "external"
+      schema-type: "auto-junk"
+spec:
+    description: "BigQuery Sample Table"
+    datasetRef:
+      name: samplebigquerytable
+    friendlyName: bigquerytable-sample
+    externalDataConfiguration:
+      autodetect: true
+      compression: NONE
+      ignoreUnknownValues: false
+      maxBadRecords: 10
+      sourceFormat: CSV
+      sourceUris:
+        - "gs://gcp-public-data-landsat/LC08/01/044/034/LC08_L1GT_044034_20130330_20170310_01_T2/LC08_L1GT_044034_20130330_20170310_01_T2_ANG.txt"
+        - "gs://gcp-public-data-landsat/LC08/01/044/034/LC08_L1GT_044034_20130330_20180201_01_T2/LC08_L1GT_044034_20130330_20180201_01_T2_ANG.txt"

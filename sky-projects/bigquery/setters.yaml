@@ -27,3 +27,9 @@ data:
   default-table-expiration-ms: "3600000"
   delete-contents-on-destroy: "false"
   filter: ""
+  #full email address for data admin group
+  data-admin-group: ""
+  #full email address for data  group
+  data-editor-group: ""
+  #full email address for data  group
+  data-viewer-group: ""

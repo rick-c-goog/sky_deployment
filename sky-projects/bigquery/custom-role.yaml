@@ -1,0 +1,81 @@
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMCustomRole
+metadata:
+    annotations:
+      # Replace ${PROJECT_ID?} with your project ID
+      cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
+    name: dataadminrole
+    namespace: project-id # kpt-set: ${project-id}
+spec:
+    title: This Project-Level Dev Custom Role
+    description: This role only contains dev relatd permissions
+    permissions:
+      - bigquery.datasets.*
+      - bigquery.models.*
+      - bigquery.routines.*
+      - bigquery.rowAccessPolicies.create
+      - bigquery.rowAccessPolicies.delete
+      - bigquery.rowAccessPolicies.getIamPolicy
+      - bigquery.rowAccessPolicies.list
+      - bigquery.rowAccessPolicies.setIamPolicy
+      - bigquery.rowAccessPolicies.update
+      - bigquery.tables.*
+    stage: GA
+
+---
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMCustomRole
+metadata:
+    annotations:
+      # Replace ${PROJECT_ID?} with your project ID
+      cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
+    name: dataedit
+    namespace: project-id # kpt-set: ${project-id}
+spec:
+    title: This Project-Level Dev Custom Role
+    description: This role only contains dev relatd permissions
+    permissions:
+      - bigquery.datasets.get
+      - bigquery.datasets.getIamPolicy
+      - bigquery.datasets.updateTag
+      - bigquery.models.*
+      - bigquery.routines.*
+      - bigquery.tables.create
+      - bigquery.tables.createSnapshot
+      - bigquery.tables.delete
+      - bigquery.tables.export
+      - bigquery.tables.get
+      - bigquery.tables.getData
+      - bigquery.tables.getIamPolicy
+      - bigquery.tables.list
+      - bigquery.tables.restoreSnapshot
+      - bigquery.tables.update
+      - bigquery.tables.updateData
+    stage: GA
+---
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMCustomRole
+metadata:
+    annotations:
+      # Replace ${PROJECT_ID?} with your project ID
+      cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
+    name: dataviewerrole
+    namespace: project-id # kpt-set: ${project-id}
+spec:
+    title: This Project-Level Dev Custom Role
+    description: This role only contains dev relatd permissions
+    permissions:
+      - bigquery.datasets.get
+      - bigquery.datasets.getIamPolicy
+      - bigquery.models.export
+      - bigquery.models.getData
+      - bigquery.models.getMetadata
+      - bigquery.models.list
+      - bigquery.routines.get
+      - bigquery.routines.list
+      - bigquery.tables.createSnapshot
+      - bigquery.tables.export
+      - bigquery.tables.get
+      - bigquery.tables.getData
+    stage: GA
+---

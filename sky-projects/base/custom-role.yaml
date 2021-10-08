@@ -23,7 +23,7 @@ metadata:
     namespace: project-id # kpt-set: ${project-id}
 spec:
     # Replace ${PROJECT_ID?} with your project ID
-    member: serviceAccount:dev-sa@project-id.iam.gserviceaccount.com # kpt-set: dev-sa@${project-id}.iam.gserviceaccount.com
+    member: serviceAccount:dev-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:dev-sa@${project-id}.iam.gserviceaccount.com
     # Replace ${PROJECT_ID?} with your project ID
     role: roles/dev-custom-role # kpt-set: projects/${project-id}/roles/dev-custom-role
     resourceRef:

@@ -18,6 +18,7 @@ metadata:
     labels:
       key-one: bq-ds-key
     name: bq-ds-key
+    namespace: project-id # kpt-set: ${project-id}
 spec:
     keyRingRef:
       name: bq-key-ring
@@ -33,6 +34,7 @@ metadata:
     labels:
       key-one: bq-table-key
     name: bq-table-key
+    namespace: project-id # kpt-set: ${project-id}
 spec:
     keyRingRef:
       name: bq-key-ring
@@ -45,5 +47,6 @@ apiVersion: kms.cnrm.cloud.google.com/v1beta1
 kind: KMSKeyRing
 metadata:
     name: bq-key-ring
+    namespace: project-id # kpt-set: ${project-id}
 spec:
     location: us-central1

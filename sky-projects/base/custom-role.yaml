@@ -4,7 +4,7 @@ metadata:
     annotations:
       # Replace ${PROJECT_ID?} with your project ID
       cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
-    name: dev-custom-role
+    name: dev_role
     namespace: project-id # kpt-set: ${project-id}
 spec:
     title: This Project-Level Dev Custom Role
@@ -25,11 +25,11 @@ spec:
     # Replace ${PROJECT_ID?} with your project ID
     member: serviceAccount:dev-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:dev-sa@${project-id}.iam.gserviceaccount.com
     # Replace ${PROJECT_ID?} with your project ID
-    role: roles/dev-custom-role # kpt-set: projects/${project-id}/roles/dev-custom-role
     resourceRef:
-      apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
-      kind: Project
-      external: projects/project-id # kpt-set: projects/${project-id}
+     apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
+     kind: Project
+     external: projects/my-project-id # kpt-set: projects/${project-id}
+    role: roles/dev_role
 ---
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMServiceAccount

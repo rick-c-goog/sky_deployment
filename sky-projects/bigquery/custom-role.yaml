@@ -29,7 +29,7 @@ metadata:
     annotations:
       # Replace ${PROJECT_ID?} with your project ID
       cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
-    name: dataedit
+    name: dataeditorrole
     namespace: project-id # kpt-set: ${project-id}
 spec:
     title: This Project-Level Dev Custom Role

@@ -23,10 +23,10 @@ spec:
   access:
   - role: roles/dataeditorrole
     groupByEmail: "group:data-editor-group" # kpt-set: group:${data-editor-group} 
-  defaultEncryptionConfiguration:
-    kmsKeyRef:
-      name: bq-ds-key
-      namespace: project-id # kpt-set: ${project-id}
+  #defaultEncryptionConfiguration:
+  #  kmsKeyRef:
+  #    name: bq-ds-key
+  #    namespace: project-id # kpt-set: ${project-id}
 ---
 apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
 kind: BigQueryTable
@@ -48,4 +48,3 @@ spec:
       sourceFormat: CSV
       sourceUris:
         - "gs://gcp-public-data-landsat/LC08/01/044/034/LC08_L1GT_044034_20130330_20170310_01_T2/LC08_L1GT_044034_20130330_20170310_01_T2_ANG.txt"
-        - "gs://gcp-public-data-landsat/LC08/01/044/034/LC08_L1GT_044034_20130330_20180201_01_T2/LC08_L1GT_044034_20130330_20180201_01_T2_ANG.txt"

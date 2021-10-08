@@ -22,6 +22,7 @@ spec:
   location: US # kpt-set: ${dataset-location}
   access:
   - role: roles/dataeditorrole
+    groupByEmail: "group:data-editor-group" # kpt-set: group:${data-editor-group} 
   defaultEncryptionConfiguration:
     kmsKeyRef:
       name: bq-ds-key

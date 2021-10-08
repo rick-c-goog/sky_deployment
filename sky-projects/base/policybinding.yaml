@@ -14,3 +14,52 @@ spec:
     - role: roles/owner
       members:
         - member: "serviceAccount:project-sa@project-id.iam.gserviceaccount.com" # kpt-set: serviceAccount:dev-sa@${project-id}.iam.gserviceaccount.com
+
+---
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPolicyMember
+metadata:
+    name: iampolicymember-dev-custom-role-sa
+    namespace: project-id # kpt-set: ${project-id}
+spec:
+    # Replace ${PROJECT_ID?} with your project ID
+    member: serviceAccount:dev-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:dev-sa@${project-id}.iam.gserviceaccount.com
+    # Replace ${PROJECT_ID?} with your project ID
+    resourceRef:
+     apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
+     kind: Project
+     external: projects/my-project-id # kpt-set: projects/${project-id}
+    role: roles/devrole
+---
+
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPolicyMember
+metadata:
+    name: iampolicymember-admin-custom-role-sa
+    namespace: project-id # kpt-set: ${project-id}
+spec:
+    # Replace ${PROJECT_ID?} with your project ID
+    member: serviceAccount:admin-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:admin-sa@${project-id}.iam.gserviceaccount.com
+    # Replace ${PROJECT_ID?} with your project ID
+    resourceRef:
+     apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
+     kind: Project
+     external: projects/my-project-id # kpt-set: projects/${project-id}
+    role: roles/adminrole
+---
+
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPolicyMember
+metadata:
+    name: iampolicymember-viewer-custom-role-sa
+    namespace: project-id # kpt-set: ${project-id}
+spec:
+    # Replace ${PROJECT_ID?} with your project ID
+    member: serviceAccount:viewer-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:viewer-sa@${project-id}.iam.gserviceaccount.com
+    # Replace ${PROJECT_ID?} with your project ID
+    resourceRef:
+     apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
+     kind: Project
+     external: projects/my-project-id # kpt-set: projects/${project-id}
+    role: roles/viewerrole
+---

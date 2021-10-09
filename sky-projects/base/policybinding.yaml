@@ -1,19 +1,17 @@
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
-kind: IAMPartialPolicy
-metadata: # kpt-merge: config-control/logging-sa-iam-permissions
-  name: owner-binding
-  namespace: project-id # kpt-set: ${project-id}
-  annotations:
-    cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
+kind: IAMPolicyMember
+metadata:
+    name: editor-binding
+    namespace: project-id # kpt-set: ${project-id}
 spec:
-  resourceRef:
-    apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
-    kind: Project
-    external: projects/project-id # kpt-set: projects/${project-id}
-  bindings:
-    - role: roles/owner
-      members:
-        - member: "serviceAccount:project-sa@project-id.iam.gserviceaccount.com" # kpt-set: serviceAccount:dev-sa@${project-id}.iam.gserviceaccount.com
+    # Replace ${PROJECT_ID?} with your project ID
+    member: serviceAccount:project-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:project-sa@${project-id}.iam.gserviceaccount.com
+    # Replace ${PROJECT_ID?} with your project ID
+    resourceRef:
+     apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
+     kind: Project
+     external: projects/my-project-id # kpt-set: projects/${project-id}
+    role: roles/owner
 ---
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPolicyMember

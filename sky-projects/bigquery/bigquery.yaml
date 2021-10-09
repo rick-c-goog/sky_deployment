@@ -21,12 +21,8 @@ spec:
   friendlyName: audit-logs # kpt-set: ${dataset-name}
   location: US # kpt-set: ${dataset-location}
   access:
-  - role: roles/bigquery.dataOwner
+  - role: roles/bigquery.dataEditor
     groupByEmail: "data-editor-group" # kpt-set: {data-editor-group} 
-  - role: roles/bigquery.admin
-    groupByEmail: "data-admin-group" # kpt-set: {data-admin-group} 
-  - role: roles/bigquery.dataViewer
-    groupByEmail: "data-viewer-group" # kpt-set: {data-viewer-group}
   defaultEncryptionConfiguration:
     kmsKeyRef:
       name: bq-ds-key

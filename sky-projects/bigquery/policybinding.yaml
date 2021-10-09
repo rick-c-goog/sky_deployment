@@ -28,7 +28,7 @@ spec:
      apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
      kind: Project
      external: projects/my-project-id # kpt-set: projects/${project-id}
-    role: roles/editor
+    role: roles/dataeditorrole
 ---
 
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
@@ -43,5 +43,43 @@ spec:
      apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
      kind: Project
      external: projects/my-project-id # kpt-set: projects/${project-id}
-    role: roles/viewer
+    role: roles/dataviewerrole
+---
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPartialPolicy
+metadata: # kpt-merge: config-control/logging-sa-iam-permissions
+  name: project-get-access-permissions
+  namespace: project-id # kpt-set: ${project-id}
+  annotations:
+    cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
+spec:
+  resourceRef:
+    apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
+    kind: Project
+    external: projects/my-project-id # kpt-set: projects/${project-id}
+  bindings:
+    - role: roles/resourcemanager.projects.get
+      members:
+        - member: "group:data-admin-group" # kpt-set: group:${data-admin-group}
+        - member: "group:data-editor-group" # kpt-set: group:${data-admin-group}
+        - member: "group:data-viewer-group" # kpt-set: group:${data-viewer-group}  
+---
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPartialPolicy
+metadata: # kpt-merge: config-control/logging-sa-iam-permissions
+  name: project-list-permissions
+  namespace: project-id # kpt-set: ${project-id}
+  annotations:
+    cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
+spec:
+  resourceRef:
+    apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
+    kind: Project
+    external: projects/my-project-id # kpt-set: projects/${project-id}
+  bindings:
+    - role: roles/resourcemanager.projects.lists
+      members:
+        - member: "group:data-admin-group" # kpt-set: group:${data-admin-group}
+        - member: "group:data-editor-group" # kpt-set: group:${data-admin-group}
+        - member: "group:data-viewer-group" # kpt-set: group:${data-viewer-group}  
 ---

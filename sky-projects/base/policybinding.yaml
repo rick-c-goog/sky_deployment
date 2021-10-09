@@ -1,7 +1,7 @@
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPolicyMember
 metadata:
-    name: editor-binding
+    name: admin-binding
     namespace: project-id # kpt-set: ${project-id}
 spec:
     # Replace ${PROJECT_ID?} with your project ID

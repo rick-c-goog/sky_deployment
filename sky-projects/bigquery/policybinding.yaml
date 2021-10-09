@@ -29,7 +29,7 @@ spec:
   bindings:
     - role: roles/dataadminrole
       members:
-        - member: serviceAccount:data-admin-sa@project-id.iam.gserviceaccount.com # kpt-set: data-admin-sa@${project-id}.iam.gserviceaccount.com
+        - member: serviceAccount:data-admin-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:data-admin-sa@${project-id}.iam.gserviceaccount.com
 ---
 #### Policy binding for data editor group
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
@@ -62,7 +62,7 @@ spec:
   bindings:
     - role: roles/dataeditorrole
       members:
-        - member: serviceAccount:data-editor-sa@project-id.iam.gserviceaccount.com # kpt-set: data-editor-sa@${project-id}.iam.gserviceaccount.com
+        - member: serviceAccount:data-editor-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:data-editor-sa@${project-id}.iam.gserviceaccount.com
 ---
 ####Policy binding for data viewer group
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
@@ -95,7 +95,7 @@ spec:
   bindings:
     - role: roles/dataviewerrole
       members:
-        - member: serviceAccount:data-viewer-sa@project-id.iam.gserviceaccount.com # kpt-set: data-viewer-sa@${project-id}.iam.gserviceaccount.com
+        - member: serviceAccount:data-viewer-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:data-viewer-sa@${project-id}.iam.gserviceaccount.com
 ---
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPartialPolicy
@@ -112,9 +112,9 @@ spec:
   bindings:
     - role: roles/resourcemanager.projects.get
       members:
-        - member: serviceAccount:data-editor-sa@project-id.iam.gserviceaccount.com # kpt-set: data-editor-sa@${project-id}.iam.gserviceaccount.com
-        - member: serviceAccount:data-admin-sa@project-id.iam.gserviceaccount.com # kpt-set: data-admin-sa@${project-id}.iam.gserviceaccount.com
-        - member: serviceAccount:data-viewer-sa@project-id.iam.gserviceaccount.com # kpt-set: data-viewer-sa@${project-id}.iam.gserviceaccount.com
+        - member: serviceAccount:data-editor-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:data-editor-sa@${project-id}.iam.gserviceaccount.com
+        - member: serviceAccount:data-admin-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:data-admin-sa@${project-id}.iam.gserviceaccount.com
+        - member: serviceAccount:data-viewer-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:data-viewer-sa@${project-id}.iam.gserviceaccount.com
 ---
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPartialPolicy
@@ -131,6 +131,6 @@ spec:
   bindings:
     - role: roles/resourcemanager.projects.lists
       members:
-        - member: serviceAccount:data-editor-sa@project-id.iam.gserviceaccount.com # kpt-set: data-editor-sa@${project-id}.iam.gserviceaccount.com
-        - member: serviceAccount:data-admin-sa@project-id.iam.gserviceaccount.com # kpt-set: data-admin-sa@${project-id}.iam.gserviceaccount.com
-        - member: serviceAccount:data-viewer-sa@project-id.iam.gserviceaccount.com # kpt-set: data-viewer-sa@${project-id}.iam.gserviceaccount.com
+        - member: serviceAccount:data-editor-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:data-editor-sa@${project-id}.iam.gserviceaccount.com
+        - member: serviceAccount:data-admin-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:data-admin-sa@${project-id}.iam.gserviceaccount.com
+        - member: serviceAccount:data-viewer-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:data-viewer-sa@${project-id}.iam.gserviceaccount.com

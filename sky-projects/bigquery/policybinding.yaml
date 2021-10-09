@@ -1,23 +1,7 @@
-####Policy binding for data admin group
-apiVersion: iam.cnrm.cloud.google.com/v1beta1
-kind: IAMPolicyMember
-metadata:
-  annotations:
-    cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
-  name: data-admin-group-sa-binding
-  namespace: project-id # kpt-set: ${project-id}
-spec:
-  member: "group:data-admin-group" # kpt-set: group:${data-admin-group}
-  resourceRef:
-    apiVersion: iam.cnrm.cloud.google.com/v1beta1
-    kind: IAMServiceAccount
-    name: data-admin-sa
-  role: roles/iam.serviceAccountUser
----
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPartialPolicy
 metadata: # kpt-merge: config-control/logging-sa-iam-permissions
-  name: sa-admin-role-binding
+  name: data-admin-role-binding
   namespace: project-id # kpt-set: ${project-id}
   annotations:
     cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
@@ -27,25 +11,9 @@ spec:
     kind: Project
     external: projects/project-id # kpt-set: projects/${project-id}
   bindings:
-    - role: roles/dataadminrole
+    - role: projects/project-id/roles/dataadminrole # kpt-set: projects/${project-id}/roles/dataadminrole
       members:
-        - member: serviceAccount:data-admin-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:data-admin-sa@${project-id}.iam.gserviceaccount.com
----
-#### Policy binding for data editor group
-apiVersion: iam.cnrm.cloud.google.com/v1beta1
-kind: IAMPolicyMember
-metadata:
-  annotations:
-    cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
-  name: data-editor-group-sa-binding
-  namespace: project-id # kpt-set: ${project-id}
-spec:
-  member: "group:data-editor-group" # kpt-set: group:${data-editor-group}
-  resourceRef:
-    apiVersion: iam.cnrm.cloud.google.com/v1beta1
-    kind: IAMServiceAccount
-    name: data-editor-sa
-  role: roles/iam.serviceAccountUser
+        - member: "group:data-admin-group" # kpt-set: group:${data-admin-group}
 ---
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPartialPolicy
@@ -60,30 +28,14 @@ spec:
     kind: Project
     external: projects/project-id # kpt-set: projects/${project-id}
   bindings:
-    - role: roles/dataeditorrole
+    - role: projects/project-id/roles/dataeditorrole # kpt-set: projects/${project-id}/roles/dataeditorrole
       members:
-        - member: serviceAccount:data-editor-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:data-editor-sa@${project-id}.iam.gserviceaccount.com
----
-####Policy binding for data viewer group
-apiVersion: iam.cnrm.cloud.google.com/v1beta1
-kind: IAMPolicyMember
-metadata:
-  annotations:
-    cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
-  name: data-viewer-group-sa-binding
-  namespace: project-id # kpt-set: ${project-id}
-spec:
-  member: "group:data-viewer-group" # kpt-set: group:${data-editor-group}
-  resourceRef:
-    apiVersion: iam.cnrm.cloud.google.com/v1beta1
-    kind: IAMServiceAccount
-    name: data-viewer-sa
-  role: roles/iam.serviceAccountUser
+        - member: "group:data-editor-group" # kpt-set: group:${data-editor-group}
 ---
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPartialPolicy
 metadata: # kpt-merge: config-control/logging-sa-iam-permissions
-  name: sa-viewer-role-binding
+  name: data-viewer-role-binding
   namespace: project-id # kpt-set: ${project-id}
   annotations:
     cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
@@ -93,14 +45,14 @@ spec:
     kind: Project
     external: projects/project-id # kpt-set: projects/${project-id}
   bindings:
-    - role: roles/dataviewerrole
+    - role: projects/project-id/roles/datavierrole # kpt-set: projects/${project-id}/roles/dataviewerrole
       members:
-        - member: serviceAccount:data-viewer-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:data-viewer-sa@${project-id}.iam.gserviceaccount.com
+        - member: "group:data-viwer-group" # kpt-set: group:${data-viewer-group}
 ---
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPartialPolicy
 metadata: # kpt-merge: config-control/logging-sa-iam-permissions
-  name: project-get-access-permissions
+  name: project-access
   namespace: project-id # kpt-set: ${project-id}
   annotations:
     cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
@@ -108,29 +60,10 @@ spec:
   resourceRef:
     apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
     kind: Project
-    external: projects/my-project-id # kpt-set: projects/${project-id}
+    external: projects/project-id # kpt-set: projects/${project-id}
   bindings:
-    - role: roles/resourcemanager.projects.get
+    - role: roles/browser 
       members:
-        - member: serviceAccount:data-editor-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:data-editor-sa@${project-id}.iam.gserviceaccount.com
-        - member: serviceAccount:data-admin-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:data-admin-sa@${project-id}.iam.gserviceaccount.com
-        - member: serviceAccount:data-viewer-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:data-viewer-sa@${project-id}.iam.gserviceaccount.com
----
-apiVersion: iam.cnrm.cloud.google.com/v1beta1
-kind: IAMPartialPolicy
-metadata: # kpt-merge: config-control/logging-sa-iam-permissions
-  name: project-list-permissions
-  namespace: project-id # kpt-set: ${project-id}
-  annotations:
-    cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
-spec:
-  resourceRef:
-    apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
-    kind: Project
-    external: projects/my-project-id # kpt-set: projects/${project-id}
-  bindings:
-    - role: roles/resourcemanager.projects.lists
-      members:
-        - member: serviceAccount:data-editor-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:data-editor-sa@${project-id}.iam.gserviceaccount.com
-        - member: serviceAccount:data-admin-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:data-admin-sa@${project-id}.iam.gserviceaccount.com
-        - member: serviceAccount:data-viewer-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:data-viewer-sa@${project-id}.iam.gserviceaccount.com
+        - member: "group:data-viwer-group" # kpt-set: group:${data-viewer-group}
+        - member: "group:data-editor-group" # kpt-set: group:${data-editor-group}
+        - member: "group:data-admin-group" # kpt-set: group:${data-admin-group}

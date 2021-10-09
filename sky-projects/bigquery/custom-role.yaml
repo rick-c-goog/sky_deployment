@@ -7,8 +7,8 @@ metadata:
     name: dataadminrole
     namespace: project-id # kpt-set: ${project-id}
 spec:
-    title: This Project-Level Dev Custom Role
-    description: This role only contains dev relatd permissions
+    title: Data Admin Custom Role
+    description: Data Admin Custom Role
     permissions:
       - bigquery.datasets.create
       - bigquery.datasets.get
@@ -43,8 +43,8 @@ metadata:
     name: dataeditorrole
     namespace: project-id # kpt-set: ${project-id}
 spec:
-    title: This Project-Level Dev Custom Role
-    description: This role only contains dev relatd permissions
+    title: Data Editor Custom Role
+    description: Data Editor Custom Role
     permissions:
       - bigquery.datasets.get
       - bigquery.datasets.getIamPolicy
@@ -81,8 +81,8 @@ metadata:
     name: dataviewerrole
     namespace: project-id # kpt-set: ${project-id}
 spec:
-    title: This Project-Level Dev Custom Role
-    description: This role only contains dev relatd permissions
+    title: Data Viewer Custom Role
+    description: Data Viewer Custom Role
     permissions:
       - bigquery.datasets.get
       - bigquery.datasets.getIamPolicy

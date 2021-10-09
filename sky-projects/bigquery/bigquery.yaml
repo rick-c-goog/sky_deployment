@@ -20,14 +20,7 @@ spec:
   description: "BigQuery audit logs for project" # kpt-set: ${dataset-description}
   friendlyName: audit-logs # kpt-set: ${dataset-name}
   location: US # kpt-set: ${dataset-location}
-  access:
-  - role: projects/project-id/roles/dataadminrole # kpt-set: projects/${project-id}/roles/dataadminrole
-    groupByEmail: "data-admin-group" # kpt-set: ${data-admin-group} 
-  - role: projects/project-id/roles/dataeditorrole # kpt-set: projects/${project-id}/roles/dataeditorrole
-    groupByEmail: "data-editor-group" # kpt-set: ${data-editor-group} 
-  - role: projects/project-id/roles/dataviewerrole # kpt-set: projects/${project-id}/roles/dataviewerrole
-    groupByEmail: "data-viewer-group" # kpt-set: ${data-viewer-group} 
-  #  defaultEncryptionConfiguration:
+  #defaultEncryptionConfiguration:
   #  kmsKeyRef:
   #    name: bq-ds-key
   #    namespace: project-id # kpt-set: ${project-id}

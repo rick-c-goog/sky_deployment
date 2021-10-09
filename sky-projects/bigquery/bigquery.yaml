@@ -21,12 +21,16 @@ spec:
   friendlyName: audit-logs # kpt-set: ${dataset-name}
   location: US # kpt-set: ${dataset-location}
   access:
-  - role: roles/dataeditorrole
-    groupByEmail: "data-editor-group" # kpt-set: group:${data-editor-group} 
-  #defaultEncryptionConfiguration:
-  #  kmsKeyRef:
-  #    name: bq-ds-key
-  #    namespace: project-id # kpt-set: ${project-id}
+  - role: roles/bigquery.dataOwner
+    groupByEmail: "data-editor-group" # kpt-set: {data-editor-group} 
+  - role: roles/bigquery.admin
+    groupByEmail: "data-admin-group" # kpt-set: {data-admin-group} 
+  - role: roles/bigquery.dataViewer
+    groupByEmail: "data-viewer-group" # kpt-set: {data-viewer-group}
+  defaultEncryptionConfiguration:
+    kmsKeyRef:
+      name: bq-ds-key
+      namespace: project-id # kpt-set: ${project-id}
 ---
 apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
 kind: BigQueryTable

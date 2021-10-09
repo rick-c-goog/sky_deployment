@@ -22,7 +22,7 @@ metadata:
     namespace: project-id # kpt-set: ${project-id}
 spec:
     # Replace ${PROJECT_ID?} with your project ID
-    member: "group:data-editor-group" # kpt-set: group:${data-admin-group}
+    member: "group:data-editor-group" # kpt-set: group:${data-edit-group}
     # Replace ${PROJECT_ID?} with your project ID
     resourceRef:
      apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
@@ -61,7 +61,7 @@ spec:
     - role: roles/resourcemanager.projects.get
       members:
         - member: "group:data-admin-group" # kpt-set: group:${data-admin-group}
-        - member: "group:data-editor-group" # kpt-set: group:${data-admin-group}
+        - member: "group:data-editor-group" # kpt-set: group:${data-editor-group}
         - member: "group:data-viewer-group" # kpt-set: group:${data-viewer-group}  
 ---
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
@@ -80,6 +80,6 @@ spec:
     - role: roles/resourcemanager.projects.lists
       members:
         - member: "group:data-admin-group" # kpt-set: group:${data-admin-group}
-        - member: "group:data-editor-group" # kpt-set: group:${data-admin-group}
+        - member: "group:data-editor-group" # kpt-set: group:${data-editor-group}
         - member: "group:data-viewer-group" # kpt-set: group:${data-viewer-group}  
 ---

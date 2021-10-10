@@ -31,6 +31,16 @@ spec:
       - bigquery.tables.restoreSnapshot
       - bigquery.tables.update
       - bigquery.tables.updateData
+      - bigquery.models.export
+      - bigquery.models.getData
+      - bigquery.models.getMetadata
+      - bigquery.models.list
+      - bigquery.routines.get
+      - bigquery.routines.list
+      - bigquery.bireservations.get
+      - bigquery.capacityCommitments.get
+      - bigquery.capacityCommitments.list
+      - bigquery.config.get
     stage: GA
 
 ---
@@ -95,6 +105,7 @@ spec:
       - bigquery.tables.createSnapshot
       - bigquery.tables.export
       - bigquery.tables.get
+      - bigquery.tables.list
       - bigquery.tables.getData
       - bigquery.rowAccessPolicies.getFilteredData
     stage: GA

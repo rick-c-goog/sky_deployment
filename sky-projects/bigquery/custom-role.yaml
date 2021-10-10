@@ -120,6 +120,7 @@ spec:
       - bigquery.tables.createSnapshot
       - bigquery.tables.export
       - bigquery.tables.get
+      - bigquery.tables.list
       - bigquery.tables.getData
       - bigquery.rowAccessPolicies.getFilteredData
     stage: GA

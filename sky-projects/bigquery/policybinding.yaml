@@ -81,9 +81,9 @@ spec:
     kind: Project
     external: projects/project-id # kpt-set: projects/${project-id}
   bindings:
-    - role: roles/bigquery.dataViewer
+    - role: projects/project-id/roles/datajobrole # kpt-set: projects/${project-id}/roles/datajobrole
       members:
-        - member: "group:data-viwer-group" # kpt-set: group:${data-viewer-group}
+        - member: "group:data-job-group" # kpt-set: group:${data-job-group}
 ---
 
 # Todo: KMS encryption permission with bq service account:

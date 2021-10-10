@@ -99,3 +99,28 @@ spec:
       - bigquery.rowAccessPolicies.getFilteredData
     stage: GA
 ---
+
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMCustomRole
+metadata:
+    annotations:
+      # Replace ${PROJECT_ID?} with your project ID
+      cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
+    name: datajobrole
+    namespace: project-id # kpt-set: ${project-id}
+spec:
+    title: Data Job Custom Role
+    description: Data Job Custom Role
+    permissions:
+      - bigquery.jobs.create
+      - bigquery.jobs.get
+      - bigquery.jobs.list
+      - bigquery.datasets.get
+      - bigquery.datasets.getIamPolicy
+      - bigquery.tables.createSnapshot
+      - bigquery.tables.export
+      - bigquery.tables.get
+      - bigquery.tables.getData
+      - bigquery.rowAccessPolicies.getFilteredData
+    stage: GA
+---

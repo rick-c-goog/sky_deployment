@@ -32,24 +32,6 @@ spec:
       members:
         - member: "group:data-reservation-group" # kpt-set: group:${data-reservation-group}
 ---
-apiVersion: iam.cnrm.cloud.google.com/v1beta1
-kind: IAMPartialPolicy
-metadata: # kpt-merge: config-control/logging-sa-iam-permissions
-  name: dataset-user-role-binding
-  namespace: project-id # kpt-set: ${project-id}
-  annotations:
-    cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
-spec:
-  resourceRef:
-    apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
-    kind: BigQueryDataset
-    name: dataset-name #kpt-set: ${dataset-name}
-    external: projects/data-project-id # kpt-set: projects/${data-project-id}
-  bindings:
-    - role: projects/data-project-id/roles/dataviewerrole # kpt-set: projects/${data-project-id}/roles/dataviewerrole
-      members:
-        - member: "group:data-editor-group" # kpt-set: group:${data-editor-group}
----
 
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPartialPolicy

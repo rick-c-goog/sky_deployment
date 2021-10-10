@@ -18,10 +18,10 @@ metadata: # kpt-merge: /setters
   name: setters
 data:
   # This is required
-  project-number: 
+  data-project-id:
+  dataset-name: 
   #full email address for data admin group
-  data-admin-group: ""
+  data-job-group: ""
   #full email address for data  group
-  data-editor-group: ""
-  #full email address for data  group
-  data-viewer-group: ""
+  data-reservation-group: ""
+  

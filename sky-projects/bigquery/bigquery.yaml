@@ -12,14 +12,14 @@ metadata: # kpt-merge: logging/bqlogexportdataset
   name: bqlogexportdataset
   namespace: project_id # kpt-set: ${project-id}
   annotations:
-    cnrm.cloud.google.com/delete-contents-on-destroy: "false" # kpt-set: ${delete-contents-on-destroy}
+    cnrm.cloud.google.com/delete-contents-on-destroy: "true" 
     cnrm.cloud.google.com/project-id: my-project-id # kpt-set: ${project-id}
     cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
 spec:
-  defaultTableExpirationMs: 3600000 # kpt-set: ${default-table-expiration-ms}
-  description: "BigQuery audit logs for project" # kpt-set: ${dataset-description}
-  friendlyName: audit-logs # kpt-set: ${dataset-name}
-  location: US # kpt-set: ${dataset-location}
+  defaultTableExpirationMs: 3600000 
+  description: "Sample BigQuery dataset" 
+  friendlyName: Sample BigQuery data 
+  location: US 
   #defaultEncryptionConfiguration:
   #  kmsKeyRef:
   #    name: bq-ds-key

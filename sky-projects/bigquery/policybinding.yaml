@@ -67,3 +67,23 @@ spec:
         - member: "group:data-viwer-group" # kpt-set: group:${data-viewer-group}
         - member: "group:data-editor-group" # kpt-set: group:${data-editor-group}
         - member: "group:data-admin-group" # kpt-set: group:${data-admin-group}
+---
+# Todo: KMS encryption permission with bq service account:
+
+#apiVersion: iam.cnrm.cloud.google.com/v1beta1
+#kind: IAMPartialPolicy
+#metadata: # kpt-merge: config-control/logging-sa-iam-permissions
+#  name: bq-kms-binding
+#  namespace: project-id # kpt-set: ${project-id}
+#  annotations:
+#    cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
+#spec:
+#  resourceRef:
+#    apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
+#    kind: Project
+#    external: projects/project-id # kpt-set: projects/${project-id}
+#  bindings:
+#    - role: roles/cloudkms.cryptoKeyEncrypterDecrypter # kpt-set: projects/${project-id}/roles/dataadminrole
+#      members:
+#        - member: "serviceaccount:bq-11111111@bigquery-encryption.iam.gserviceaccount.com" # kpt-set: serviceaccount:bq-${project-number}@bigquery-encryption.iam.gserviceaccount.com
+---

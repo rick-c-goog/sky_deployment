@@ -22,7 +22,7 @@ spec:
   location: US 
   access:
   - role: roles/dataset.reader
-    member: "group:data-job-group" # kpt-set: group:${data-job-group}
+    groupByEmail: "group:data-job-group" # kpt-set: group:${data-job-group}
   #defaultEncryptionConfiguration:
   #  kmsKeyRef:
   #    name: bq-ds-key

@@ -20,6 +20,9 @@ spec:
   description: "Sample BigQuery dataset" 
   friendlyName: Sample BigQuery data 
   location: US 
+  access:
+  - role: roles/dataset.reader
+    member: "group:data-job-group" # kpt-set: group:${data-job-group}
   #defaultEncryptionConfiguration:
   #  kmsKeyRef:
   #    name: bq-ds-key

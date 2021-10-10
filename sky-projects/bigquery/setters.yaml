@@ -25,3 +25,4 @@ data:
   data-editor-group: ""
   #full email address for data  group
   data-viewer-group: ""
+  data-job-group: ""

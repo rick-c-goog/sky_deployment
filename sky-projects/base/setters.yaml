@@ -10,6 +10,10 @@ data:
   billing-account-id: 
   # This default is safe to keep
   project-namespace: 
+
+  management-project-id: 
+  # This default is safe to keep
+  management-namespace: config-control
   
 
 

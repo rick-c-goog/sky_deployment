@@ -1,9 +1,0 @@
-apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
-kind: Folder
-metadata: # kpt-merge: config-control
-  name: folder-sample-in-folder # kpt-set: ${sky-team-name}
-  namespace:  hierarchy
-spec:
-  displayName: folder-name  # kpt-set: ${sky-team-name}
-  folderRef:
-    external: "12345" # kpt-set: ${landing-zone-folder-id}

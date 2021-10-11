@@ -6,12 +6,12 @@ data:
   project-id: project-id
   # These defaults can be kept
   sky-team-name: test
-  
+
   billing-account-id: 
   # Groups to use for org-level roles
   management-project-id: 
   # This default is safe to keep
-  management-namespace: config-control
+  project-namespace: 
   
 
 

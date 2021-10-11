@@ -2,7 +2,7 @@ apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPartialPolicy
 metadata: # kpt-merge: config-control/logging-sa-iam-permissions
   name: data-job-role-binding
-  namespace: project-id # kpt-set: ${project-id}
+  namespace: project-namespace # kpt-set: ${project-namespace}
   annotations:
     cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
 spec:
@@ -19,7 +19,7 @@ apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPartialPolicy
 metadata: # kpt-merge: config-control/logging-sa-iam-permissions
   name: data-reservation-role-binding
-  namespace: project-id # kpt-set: ${project-id}
+  namespace: project-namespace # kpt-set: ${project-namespace}
   annotations:
     cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
 spec:
@@ -37,7 +37,7 @@ apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPartialPolicy
 metadata: # kpt-merge: config-control/logging-sa-iam-permissions
   name: project-get-access
-  namespace: project-id # kpt-set: ${project-id}
+  namespace: project-namespace # kpt-set: ${project-namespace}
   annotations:
     cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
 spec:

@@ -5,7 +5,7 @@ metadata:
       # Replace ${PROJECT_ID?} with your project ID
       cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
     name: dataadminrole
-    namespace: project-id # kpt-set: ${project-id}
+    namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     title: Data Admin Custom Role
     description: Data Admin Custom Role
@@ -51,7 +51,7 @@ metadata:
       # Replace ${PROJECT_ID?} with your project ID
       cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
     name: dataeditorrole
-    namespace: project-id # kpt-set: ${project-id}
+    namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     title: Data Editor Custom Role
     description: Data Editor Custom Role
@@ -89,7 +89,7 @@ metadata:
       # Replace ${PROJECT_ID?} with your project ID
       cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
     name: dataviewerrole
-    namespace: project-id # kpt-set: ${project-id}
+    namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     title: Data Viewer Custom Role
     description: Data Viewer Custom Role
@@ -118,7 +118,7 @@ metadata:
       # Replace ${PROJECT_ID?} with your project ID
       cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
     name: datajobrole
-    namespace: project-id # kpt-set: ${project-id}
+    namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     title: Data Job Custom Role
     description: Data Job Custom Role

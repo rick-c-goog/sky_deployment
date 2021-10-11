@@ -8,6 +8,7 @@ apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
 kind: ResourceManagerPolicy
 metadata:
     name: rm-disableserialportaccess
+    namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     projectRef:
       name: project-id # kpt-set: ${project-id}
@@ -19,6 +20,7 @@ apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
 kind: ResourceManagerPolicy
 metadata:
     name: rm-disablesakeycreation
+    namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     projectRef:
       name: project-id # kpt-set: ${project-id}

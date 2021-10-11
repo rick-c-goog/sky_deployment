@@ -17,8 +17,6 @@ kind: ConfigMap
 metadata: # kpt-merge: /setters
   name: setters
 data:
-  # This is required
-  project-number: 
   #full email address for data admin group
   data-admin-group: ""
   #full email address for data  group

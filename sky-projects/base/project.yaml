@@ -15,7 +15,7 @@ apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
 kind: Project
 metadata: # kpt-merge: projects/project-id
   name: project-id # kpt-set: ${project-id}
-  namespace: project-namespace # kpt-set: ${project-namespace}
+  namespace: projects-namespace # kpt-set: ${projects-namespace}
   annotations:
     cnrm.cloud.google.com/auto-create-network: "false"
     cnrm.cloud.google.com/blueprint: cnrm/landing-zone:project/v0.4.0

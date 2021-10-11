@@ -8,8 +8,6 @@ data:
   sky-team-name: test
 
   billing-account-id: 
-  # Groups to use for org-level roles
-  management-project-id: 
   # This default is safe to keep
   project-namespace: 
   

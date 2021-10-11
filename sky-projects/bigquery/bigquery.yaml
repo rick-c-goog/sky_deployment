@@ -34,7 +34,6 @@ metadata:
     name: bigquerytablesample
     namespace: project-namespace # kpt-set: ${project-namespace}
     annotations:
-      cnrm.cloud.google.com/project-id: my-project-id # kpt-set: ${project-id}
       cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
     labels:
       data-source: "external"
@@ -42,7 +41,7 @@ metadata:
 spec:
     description: "BigQuery Sample Table"
     datasetRef:
-      name: bqlogexportdataset
+      external: projects/project-id/datasets/bqlogexportdataset # kpt: projects/${project-id}/datasets/bqlogexportdataset
     friendlyName: bigquerytable-sample
     externalDataConfiguration:
       autodetect: true

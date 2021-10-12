@@ -41,7 +41,7 @@ metadata:
 spec:
     description: "BigQuery Sample Table"
     datasetRef:
-      external: projects/project-id/datasets/bqlogexportdataset # kpt set: projects/${project-id}/datasets/bqlogexportdataset
+      name: bqlogexportdataset 
     friendlyName: bigquerytable-sample
     externalDataConfiguration:
       autodetect: true

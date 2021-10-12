@@ -9,7 +9,8 @@
 apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
 kind: BigQueryDataset
 metadata: # kpt-merge: logging/bqlogexportdataset
-  name: bqlogexportdataset
+  name: bq-dataset-name # kpt-set: ${bq-dataset-name}
+  annotations:
   namespace: project-namespace # kpt-set: ${project-namespace}
   annotations:
     cnrm.cloud.google.com/delete-contents-on-destroy: "true" 
@@ -31,7 +32,7 @@ spec:
 apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
 kind: BigQueryTable
 metadata:
-    name: bigquerytablesample
+    name: bq-datatable-name # kpt-set: ${bq-datatable-name}
     namespace: project-namespace # kpt-set: ${project-namespace}
     annotations:
       cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
@@ -41,7 +42,7 @@ metadata:
 spec:
     description: "BigQuery Sample Table"
     datasetRef:
-      name: bqlogexportdataset 
+      name: bq-dataset-name # kpt-set: ${bq-dataset-name} 
     friendlyName: bigquerytable-sample
     externalDataConfiguration:
       autodetect: true

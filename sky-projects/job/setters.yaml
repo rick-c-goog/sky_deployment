@@ -18,10 +18,10 @@ metadata: # kpt-merge: /setters
   name: setters
 data:
   # This is required
-  data-project-id:
-  dataset-name: 
+  data-project-id: ${data_project_id}
+  dataset-name: ${data_project_id}
   #full email address for data admin group
-  data-job-group: ""
+  data-job-group: "${data_job_group}"
   #full email address for data  group
-  data-reservation-group: ""
+  data-reservation-group: "${data_reservation_group}"
   

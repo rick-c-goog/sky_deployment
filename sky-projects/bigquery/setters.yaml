@@ -17,10 +17,15 @@ kind: ConfigMap
 metadata: # kpt-merge: /setters
   name: setters
 data:
+  #bigquery dataset name
+  bq-dataset-name: ${bq_dataset_name}
+  #bigquery datatable name
+  bq-datatable-name: ${bq_datatable_name}
   #full email address for data admin group
-  data-admin-group: ""
-  #full email address for data  group
-  data-editor-group: ""
-  #full email address for data  group
-  data-viewer-group: ""
-  data-job-group: ""
+  data-admin-group: "${data_admin_group}"
+  #full email address for data editor group
+  data-editor-group: "${data_editor_group}"
+  #full email address for data viewer group
+  data-viewer-group: "${data_viewer_group}"
+  #full email address for data job run group
+  data-job-group: "${data_job_group}"

@@ -3,17 +3,17 @@ kind: ConfigMap
 metadata: 
   name: setters
 data:
-  project-id: project-id
+  project-id: ${project-id}
   # These defaults can be kept
-  sky-team-name: test
+  sky-team-name: ${sky_team_name}
 
-  billing-account-id: 
+  billing-account-id: ${billing_account_id}
   # This default is safe to keep
-  project-namespace: 
+  project-namespace: ${project_namespace}
 
-  management-project-id: 
+  management-project-id: ${management_project_id}
   # This default is safe to keep
-  management-namespace: config-control
+  management-namespace: ${management_namespace}
   
 
 

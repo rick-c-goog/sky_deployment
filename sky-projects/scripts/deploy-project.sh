@@ -1,23 +1,29 @@
 deployment_dir=$HOME/source-repo/sky-projects
-project_id=sky-data-$RANDOM
-cd $deployment_dir
-kpt pkg get https://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@github.com/rick-c-goog/sky_deployment/sky-projects/base@main ./$project_id
-kpt cfg set $project_id/ project-id $project_id
-kpt cfg set $project_id/ sky-team-name sky-test
-kpt cfg set $project_id/ billing-account-id 011552-7DA53C-81003E
-kpt cfg set $project_id/ projects-namespace projects
-kpt cfg set $project_id/ project-namespace $project_id
-kpt cfg set $project_id/ management-project-id rick-multi-tenancy
-kpt cfg set $project_id/ management-namespace config-control 
-cd $project_id
-kpt pkg get https://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@github.com/rick-c-goog/sky_deployment/sky-projects/bigquery@main ./bigquery
-kpt cfg set bigquery/ data-admin-group "data-admin@rickruguichen.altostrat.com"
-kpt cfg set bigquery/ data-editor-group "data-editor@rickruguichen.altostrat.com"
-kpt cfg set bigquery/ data-viewer-group "data-viewer@rickruguichen.altostrat.com"
-kpt cfg set bigquery/ data-job-group "data-job@rickruguichen.altostrat.com"
+export project_id=sky-data-$RANDOM
+export sky_team_name=sky-test
+export billing_account_id=011552-7DA53C-81003E
+export projects_namespace=projects
+export management_project_id=rick-multi-tenancy
+export management_namespace=config-control
 
+
+cd $deployment_dir
+kpt pkg get https://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@github.com/rick-c-goog/sky_deployment.git/sky-projects/base@main ./$project_id
+cd $project_id
+envsubst < "./setters.yaml" >  "setters.yaml"
+kpt pkg get https://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@github.com/rick-c-goog/sky_deployment.git/sky-projects/bigquery@main ./bigquery
+cd bigquery
+export data_admin_group="data-admin@rickruguichen.altostrat.com"
+export data_editor_group="data-editor@rickruguichen.altostrat.com"
+export data_viewer_group="data-viewer@rickruguichen.altostrat.com"
+export data_job_group="data-job@rickruguichen.altostrat.com"
+export bq_dataset_name=bqsampledataset
+export bq_datatable_name=bqsampledatatable
+envsubst < "./setters.yaml" >  "setters.yaml"
 cd $deployment_dir
 git add .
 git commit -m "project id: $project_id"
 git push
+
+
 

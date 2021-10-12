@@ -19,4 +19,5 @@ kpt cfg set bigquery/ data-job-group "data-job@rickruguichen.altostrat.com"
 cd $deployment_dir
 git add .
 git commit -m "project id: $project-id"
+git push
 

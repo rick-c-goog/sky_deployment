@@ -1,5 +1,5 @@
 deployment_dir=$HOME/source-repo/sky-projects
-project-id=sky-data-$RANDOM
+project_id=sky-data-$RANDOM
 cd $deployment_dir
 kpt pkg get https://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@github.com/rick-c-goog/sky_deployment/sky-projects/base@main ./$project_id
 kpt cfg set $project-id/ project-id $project-id

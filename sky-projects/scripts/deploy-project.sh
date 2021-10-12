@@ -11,6 +11,12 @@ cd $deployment_dir
 kpt pkg get https://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@github.com/rick-c-goog/sky_deployment.git/sky-projects/base@main ./$project_id
 cd $project_id
 envsubst < "./setters.yaml.template" >  "setters.yaml"
+git add .
+git commit -m "create project project id: $project_id stage 1"
+git push
+sleep 60
+
+
 kpt pkg get https://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@github.com/rick-c-goog/sky_deployment.git/sky-projects/bigquery@main ./bigquery
 cd bigquery
 export data_admin_group="data-admin@rickruguichen.altostrat.com"

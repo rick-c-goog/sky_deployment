@@ -19,5 +19,4 @@ metadata: # kpt-merge: /setters
   annotations:
     config.kubernetes.io/local-config: true
 data:
-  management-namespace: config-control
-  #projects-namespace: projects
+  

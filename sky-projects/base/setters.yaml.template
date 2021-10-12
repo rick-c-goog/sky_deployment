@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata: 
   name: setters
 data:
-  project-id: ${project-id}
+  project-id: ${project_id}
   # These defaults can be kept
   sky-team-name: ${sky_team_name}
 

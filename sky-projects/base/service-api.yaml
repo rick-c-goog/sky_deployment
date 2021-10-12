@@ -6,8 +6,9 @@ metadata:
       cnrm.cloud.google.com/deletion-policy: "abandon"
       # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
       cnrm.cloud.google.com/disable-dependent-services: "false"
+      cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
     name: logging.googleapis.com
-    namespace: project-namespace # kpt-set: ${project-namespace}
+    namespace: projects-namespace # kpt-set: ${projects-namespace}
     
 ---
 apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
@@ -17,7 +18,8 @@ metadata:
       # use the deletion policy of abandon to ensure that the pubsub service remains enabled when this resource is deleted.
       cnrm.cloud.google.com/deletion-policy: "abandon"
       # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
+      cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
       cnrm.cloud.google.com/disable-dependent-services: "false"
     name: monitoringe.googleapis.com
-    namespace: project-id # kpt-set: ${project-id}
+    namespace: projects-namespace # kpt-set: ${projects-namespace}
 # To DO: append other service API needs to be enabled

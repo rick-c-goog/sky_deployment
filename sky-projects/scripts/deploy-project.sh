@@ -3,6 +3,7 @@ export project_id=sky-data-$RANDOM
 export sky_team_name=sky-test
 export billing_account_id=011552-7DA53C-81003E
 export projects_namespace=projects
+export project_namespace=$project_id
 export management_project_id=rick-multi-tenancy
 export management_namespace=config-control
 cd $deployment_dir

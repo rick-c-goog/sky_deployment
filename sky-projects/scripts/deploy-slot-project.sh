@@ -15,12 +15,12 @@ export bq_dataset_name=bqsampledataset
 export bq_datatable_name=bqsampledatatable
 
 cd $deployment_dir
-kpt pkg get https://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@github.com/rick-c-goog/sky_deployment.git/sky-projects/base@main ./$project_id
+kpt pkg get https://$githubtoken@github.com/rick-c-goog/sky_deployment.git/sky-projects/base@main ./$project_id
 cd $project_id
 envsubst < "./setters.yaml.template" >  "setters.yaml"
 
 
-kpt pkg get https://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@github.com/rick-c-goog/sky_deployment.git/sky-projects/job@main ./job
+kpt pkg get https://$githubtoken@github.com/rick-c-goog/sky_deployment.git/sky-projects/job@main ./job
 cd job
 
 envsubst < "./setters.yaml.template" >  "setters.yaml"

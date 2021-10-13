@@ -7,13 +7,14 @@ export project_namespace=$project_id
 export projects_namespace=projects
 export management_project_id=rick-multi-tenancy
 export management_namespace=config-control
+githubtoken=xxxxxx
 cd $deployment_dir
-kpt pkg get https://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@github.com/rick-c-goog/sky_deployment.git/sky-projects/base@main ./$project_id
+kpt pkg get https://$githubtoken@github.com/rick-c-goog/sky_deployment.git/sky-projects/base@main ./$project_id
 cd $project_id
 envsubst < "./setters.yaml.template" >  "setters.yaml"
 
 
-kpt pkg get https://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@github.com/rick-c-goog/sky_deployment.git/sky-projects/bigquery@main ./bigquery
+kpt pkg get https://$githubtoken@github.com/rick-c-goog/sky_deployment.git/sky-projects/bigquery@main ./bigquery
 cd bigquery
 export data_admin_group="data-admin@rickruguichen.altostrat.com"
 export data_editor_group="data-editor@rickruguichen.altostrat.com"

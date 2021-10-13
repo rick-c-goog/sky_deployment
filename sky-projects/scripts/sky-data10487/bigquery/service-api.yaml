@@ -1,0 +1,83 @@
+apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
+kind: Service
+metadata: # kpt-merge: project-namespace/bigquery.googleapis.com
+  annotations:
+    # use the deletion policy of abandon to ensure that the pubsub service remains enabled when this resource is deleted.
+    cnrm.cloud.google.com/deletion-policy: "abandon"
+    # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
+    cnrm.cloud.google.com/disable-dependent-services: "false"
+    cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
+  name: bigquery.googleapis.com
+  namespace: project-namespace # kpt-set: ${project-namespace}
+---
+apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
+kind: Service
+metadata: # kpt-merge: projects-namespace/bigquerystorage.googleapis.com
+  annotations:
+    # use the deletion policy of abandon to ensure that the pubsub service remains enabled when this resource is deleted.
+    cnrm.cloud.google.com/deletion-policy: "abandon"
+    # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
+    cnrm.cloud.google.com/disable-dependent-services: "false"
+    cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
+  name: bigquerystorage.googleapis.com
+  namespace: projects-namespace # kpt-set: ${projects-namespace}
+---
+apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
+kind: Service
+metadata: # kpt-merge: projects-namespace/bigqueryreservation.googleapis.com
+  annotations:
+    # use the deletion policy of abandon to ensure that the pubsub service remains enabled when this resource is deleted.
+    cnrm.cloud.google.com/deletion-policy: "abandon"
+    # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
+    cnrm.cloud.google.com/disable-dependent-services: "false"
+    cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
+  name: bigqueryreservation.googleapis.com
+  namespace: projects-namespace # kpt-set: ${projects-namespace}
+---
+apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
+kind: Service
+metadata: # kpt-merge: projects-namespace/pubsub.googleapis.com
+  annotations:
+    # use the deletion policy of abandon to ensure that the pubsub service remains enabled when this resource is deleted.
+    cnrm.cloud.google.com/deletion-policy: "abandon"
+    # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
+    cnrm.cloud.google.com/disable-dependent-services: "false"
+    cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
+  name: pubsub.googleapis.com
+  namespace: projects-namespace # kpt-set: ${projects-namespace}
+---
+apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
+kind: Service
+metadata: # kpt-merge: projects-namespace/cloudresourcemanager.googleapis.com
+  annotations:
+    # use the deletion policy of abandon to ensure that the pubsub service remains enabled when this resource is deleted.
+    cnrm.cloud.google.com/deletion-policy: "abandon"
+    # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
+    cnrm.cloud.google.com/disable-dependent-services: "false"
+    cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
+  name: cloudresourcemanager.googleapis.com
+  namespace: projects-namespace # kpt-set: ${projects-namespace}
+---
+apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
+kind: Service
+metadata: # kpt-merge: projects-namespace/storage-api.googleapis.com
+  annotations:
+    # use the deletion policy of abandon to ensure that the pubsub service remains enabled when this resource is deleted.
+    cnrm.cloud.google.com/deletion-policy: "abandon"
+    # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
+    cnrm.cloud.google.com/disable-dependent-services: "false"
+    cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
+  name: storage-api.googleapis.com
+  namespace: projects-namespace # kpt-set: ${projects-namespace}
+---
+apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
+kind: Service
+metadata: # kpt-merge: projects-namespace/cloudkms.googleapis.com
+  annotations:
+    # use the deletion policy of abandon to ensure that the pubsub service remains enabled when this resource is deleted.
+    cnrm.cloud.google.com/deletion-policy: "abandon"
+    # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
+    cnrm.cloud.google.com/disable-dependent-services: "false"
+    cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
+  name: cloudkms.googleapis.com
+  namespace: projects-namespace # kpt-set: ${projects-namespace}

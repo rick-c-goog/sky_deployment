@@ -1,0 +1,86 @@
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPartialPolicy
+metadata: # kpt-merge: config-control/logging-sa-iam-permissions
+  name: data-admin-role-binding
+  namespace: project-namespace # kpt-set: ${project-namespace}
+  annotations:
+    cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
+spec:
+  resourceRef:
+    apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
+    kind: Project
+    external: projects/project-id # kpt-set: projects/${project-id}
+  bindings:
+    - role: projects/project-id/roles/dataadminrole # kpt-set: projects/${project-id}/roles/dataadminrole
+      members:
+        - member: "group:data-admin-group" # kpt-set: group:${data-admin-group}
+---
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPartialPolicy
+metadata: # kpt-merge: config-control/logging-sa-iam-permissions
+  name: data-editor-role-binding
+  namespace: project-namespace # kpt-set: ${project-namespace}
+  annotations:
+    cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
+spec:
+  resourceRef:
+    apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
+    kind: Project
+    external: projects/project-id # kpt-set: projects/${project-id}
+  bindings:
+    - role: projects/project-id/roles/dataeditorrole # kpt-set: projects/${project-id}/roles/dataeditorrole
+      members:
+        - member: "group:data-editor-group" # kpt-set: group:${data-editor-group}
+---
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPartialPolicy
+metadata: # kpt-merge: config-control/logging-sa-iam-permissions
+  name: data-viewer-role-binding
+  namespace: project-namespace # kpt-set: ${project-namespace}
+  annotations:
+    cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
+spec:
+  resourceRef:
+    apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
+    kind: Project
+    external: projects/project-id # kpt-set: projects/${project-id}
+  bindings:
+    - role: projects/project-id/roles/datavierrole # kpt-set: projects/${project-id}/roles/dataviewerrole
+      members:
+        - member: "group:data-viwer-group" # kpt-set: group:${data-viewer-group}
+---
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPartialPolicy
+metadata: # kpt-merge: config-control/logging-sa-iam-permissions
+  name: project-access
+  namespace: project-namespace # kpt-set: ${project-namespace}
+  annotations:
+    cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
+spec:
+  resourceRef:
+    apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
+    kind: Project
+    external: projects/project-id # kpt-set: projects/${project-id}
+  bindings:
+    - role: roles/browser
+      members:
+        - member: "group:data-viwer-group" # kpt-set: group:${data-viewer-group}
+        - member: "group:data-editor-group" # kpt-set: group:${data-editor-group}
+        - member: "group:data-admin-group" # kpt-set: group:${data-admin-group}
+---
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPartialPolicy
+metadata: # kpt-merge: config-control/logging-sa-iam-permissions
+  name: data-job-role-binding
+  namespace: project-namespace # kpt-set: ${project-namespace}
+  annotations:
+    cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
+spec:
+  resourceRef:
+    apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
+    kind: Project
+    external: projects/project-id # kpt-set: projects/${project-id}
+  bindings:
+    - role: projects/project-id/roles/datajobrole # kpt-set: projects/${project-id}/roles/datajobrole
+      members:
+        - member: "group:data-job-group" # kpt-set: group:${data-job-group}

@@ -1,0 +1,135 @@
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMCustomRole
+metadata: # kpt-merge: project-namespace/dataadminrole
+  annotations:
+    # Replace ${PROJECT_ID?} with your project ID
+    cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
+  name: dataadminrole
+  namespace: project-namespace # kpt-set: ${project-namespace}
+spec:
+  title: Data Admin Custom Role
+  description: Data Admin Custom Role
+  permissions:
+    - bigquery.datasets.create
+    - bigquery.datasets.get
+    - bigquery.datasets.getIamPolicy
+    - bigquery.datasets.updateTag
+    - bigquery.rowAccessPolicies.create
+    - bigquery.rowAccessPolicies.delete
+    - bigquery.rowAccessPolicies.getIamPolicy
+    - bigquery.rowAccessPolicies.list
+    - bigquery.rowAccessPolicies.setIamPolicy
+    - bigquery.rowAccessPolicies.update
+    - bigquery.tables.create
+    - bigquery.tables.createSnapshot
+    - bigquery.tables.delete
+    - bigquery.tables.export
+    - bigquery.tables.get
+    - bigquery.tables.getData
+    - bigquery.tables.getIamPolicy
+    - bigquery.tables.list
+    - bigquery.tables.restoreSnapshot
+    - bigquery.tables.update
+    - bigquery.tables.updateData
+    - bigquery.models.export
+    - bigquery.models.getData
+    - bigquery.models.getMetadata
+    - bigquery.models.list
+    - bigquery.routines.get
+    - bigquery.routines.list
+    - bigquery.bireservations.get
+    - bigquery.capacityCommitments.get
+    - bigquery.capacityCommitments.list
+    - bigquery.config.get
+  stage: GA
+---
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMCustomRole
+metadata: # kpt-merge: project-namespace/dataeditorrole
+  annotations:
+    # Replace ${PROJECT_ID?} with your project ID
+    cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
+  name: dataeditorrole
+  namespace: project-namespace # kpt-set: ${project-namespace}
+spec:
+  title: Data Editor Custom Role
+  description: Data Editor Custom Role
+  permissions:
+    - bigquery.datasets.get
+    - bigquery.datasets.getIamPolicy
+    - bigquery.datasets.updateTag
+    - bigquery.tables.create
+    - bigquery.tables.createSnapshot
+    - bigquery.tables.delete
+    - bigquery.tables.export
+    - bigquery.tables.get
+    - bigquery.tables.getData
+    - bigquery.tables.getIamPolicy
+    - bigquery.tables.list
+    - bigquery.tables.restoreSnapshot
+    - bigquery.tables.update
+    - bigquery.tables.updateData
+    - bigquery.models.export
+    - bigquery.models.getData
+    - bigquery.models.getMetadata
+    - bigquery.models.list
+    - bigquery.routines.get
+    - bigquery.routines.list
+    - bigquery.bireservations.get
+    - bigquery.capacityCommitments.get
+    - bigquery.capacityCommitments.list
+    - bigquery.config.get
+  stage: GA
+---
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMCustomRole
+metadata: # kpt-merge: project-namespace/dataviewerrole
+  annotations:
+    # Replace ${PROJECT_ID?} with your project ID
+    cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
+  name: dataviewerrole
+  namespace: project-namespace # kpt-set: ${project-namespace}
+spec:
+  title: Data Viewer Custom Role
+  description: Data Viewer Custom Role
+  permissions:
+    - bigquery.datasets.get
+    - bigquery.datasets.getIamPolicy
+    - bigquery.models.export
+    - bigquery.models.getData
+    - bigquery.models.getMetadata
+    - bigquery.models.list
+    - bigquery.routines.get
+    - bigquery.routines.list
+    - bigquery.tables.createSnapshot
+    - bigquery.tables.export
+    - bigquery.tables.get
+    - bigquery.tables.list
+    - bigquery.tables.getData
+    - bigquery.rowAccessPolicies.getFilteredData
+  stage: GA
+---
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMCustomRole
+metadata: # kpt-merge: project-namespace/datajobrole
+  annotations:
+    # Replace ${PROJECT_ID?} with your project ID
+    cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
+  name: datajobrole
+  namespace: project-namespace # kpt-set: ${project-namespace}
+spec:
+  title: Data Job Custom Role
+  description: Data Job Custom Role
+  permissions:
+    - bigquery.jobs.create
+    - bigquery.jobs.get
+    - bigquery.jobs.list
+    - bigquery.datasets.get
+    - bigquery.datasets.getIamPolicy
+    - bigquery.tables.createSnapshot
+    - bigquery.tables.export
+    - bigquery.tables.get
+    - bigquery.tables.list
+    - bigquery.tables.getData
+    - bigquery.rowAccessPolicies.getFilteredData
+  stage: GA

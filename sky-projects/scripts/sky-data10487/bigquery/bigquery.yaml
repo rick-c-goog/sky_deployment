@@ -1,0 +1,53 @@
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# API Activation
+
+# BQ Dataset
+apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
+kind: BigQueryDataset
+metadata: # kpt-merge: logging/bqlogexportdataset
+  name: bq-dataset-name # kpt-set: ${bq-dataset-name}
+  namespace: project-namespace # kpt-set: ${project-namespace}
+  annotations:
+    cnrm.cloud.google.com/delete-contents-on-destroy: "true"
+    cnrm.cloud.google.com/project-id: my-project-id # kpt-set: ${project-id}
+    cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
+spec:
+  defaultTableExpirationMs: 3600000
+  description: "Sample BigQuery dataset"
+  friendlyName: Sample BigQuery data
+  location: US
+  #access:
+  #- role: roles/dataset.reader
+  #  groupByEmail: "data-job-group" # kpt-set: group:${data-job-group}
+  #defaultEncryptionConfiguration:
+  #  kmsKeyRef:
+  #    name: bq-ds-key
+  #    namespace: project-id # kpt-set: ${project-id}
+---
+apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
+kind: BigQueryTable
+metadata: # kpt-merge: project-namespace/bq-datatable-name
+  name: bq-datatable-name # kpt-set: ${bq-datatable-name}
+  namespace: project-namespace # kpt-set: ${project-namespace}
+  annotations:
+    cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
+  labels:
+    data-source: "external"
+    schema-type: "auto-junk"
+spec:
+  description: "BigQuery Sample Table"
+  datasetRef:
+    name: bq-dataset-name # kpt-set: ${bq-dataset-name} 
+  friendlyName: bigquerytable-sample
+  externalDataConfiguration:
+    autodetect: true
+    compression: NONE
+    ignoreUnknownValues: false
+    maxBadRecords: 10
+    sourceFormat: CSV
+    sourceUris:
+      - "gs://gcp-public-data-landsat/LC08/01/044/034/LC08_L1GT_044034_20130330_20170310_01_T2/LC08_L1GT_044034_20130330_20170310_01_T2_ANG.txt"

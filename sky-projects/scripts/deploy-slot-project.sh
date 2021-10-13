@@ -20,16 +20,15 @@ cd $project_id
 envsubst < "./setters.yaml.template" >  "setters.yaml"
 
 
-kpt pkg get https://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@github.com/rick-c-goog/sky_deployment.git/sky-projects/bigquery@main ./job
+kpt pkg get https://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@github.com/rick-c-goog/sky_deployment.git/sky-projects/job@main ./job
 cd job
 
 envsubst < "./setters.yaml.template" >  "setters.yaml"
 cd $deployment_dir
 git add .
-git commit -m "create project project id: $project_id"
+git commit -m "create slot project project id: $project_id"
 git push
 
-export project_id=sky-data$RANDOM
 
 
 

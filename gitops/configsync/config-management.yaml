@@ -21,18 +21,18 @@ metadata:
 spec:
   enableMultiRepo: true
 ---
-#apiVersion: configsync.gke.io/v1beta1
-#kind: RootSync
-#metadata:
-#  name: root-sync
-#  namespace: config-management-system
-#spec:
-#  sourceFormat: unstructured
-#  git:
-#    gcpServiceAccountEmail: krmapihost-config-controller-1@rick-multi-tenancy.iam.gserviceaccount.com # kpt-set: ${cluster-name}@${project-id}.iam.gserviceaccount.com
-#    dir: config # kpt-set: ${configsync-dir}
-#    auth: gcpserviceaccount
-#    branch: master
-#    repo: https://source.developers.google.com/p/rick-multi-tenancy/r/deployment-repo # kpt-set: https://source.developers.google.com/p/${project-id}/r/${deployment-repo}
-#    revision: HEAD
+apiVersion: configsync.gke.io/v1beta1
+kind: RootSync
+metadata:
+  name: root-sync
+  namespace: config-management-system
+spec:
+  sourceFormat: unstructured
+  git:
+    gcpServiceAccountEmail: krmapihost-config-controller-1@rick-multi-tenancy.iam.gserviceaccount.com # kpt-set: ${cluster-name}@${project-id}.iam.gserviceaccount.com
+    dir: config # kpt-set: ${configsync-dir}
+    auth: gcpserviceaccount
+    branch: master
+    repo: https://source.developers.google.com/p/rick-multi-tenancy/r/deployment-repo # kpt-set: https://source.developers.google.com/p/${project-id}/r/${deployment-repo}
+    revision: HEAD
   

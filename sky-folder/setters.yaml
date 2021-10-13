@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: # kpt-merge: /setters
+  name: setters
+data:
+  sky-team-name: sky-test
+  landing-zone-folder-id: 344403159361
+  management-project-id: rick-multi-tenancy

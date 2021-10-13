@@ -24,7 +24,7 @@ spec:
       name: bq-key-ring-project-id # kpt-set: bq-key-ring-${project-id}
     purpose: ENCRYPT_DECRYPT
     versionTemplate:
-      algorithm: EC_SIGN_P384_SHA384
+      algorithm: GOOGLE_SYMMETRIC_ENCRYPTION 
       protectionLevel: SOFTWARE
 ---
 
@@ -40,7 +40,7 @@ spec:
       name: bq-key-ring-project-id # kpt-set: bq-key-ring-${project-id}
     purpose: ENCRYPT_DECRYPT
     versionTemplate:
-      algorithm: EC_SIGN_P384_SHA384
+      algorithm: GOOGLE_SYMMETRIC_ENCRYPTION 
       protectionLevel: SOFTWARE
 ---
 apiVersion: kms.cnrm.cloud.google.com/v1beta1
@@ -63,7 +63,8 @@ spec:
   resourceRef:
     apiVersion: kms.cnrm.cloud.google.com/v1beta1
     kind: KMSCryptoKey
-    external: bq-key-ring-project-id/cryptoKeys/bq-ds-key-project-id # kpt-set:  bq-key-ring-${project-id}/cryptoKeys/bq-ds-key-${project-id}
+    name: bq-ds-key-project-id # kpt-set: bq-ds-key-${project-id}
+    namespace: project-namespace # kpt-set: ${project-namespace}
   bindings:
     - role: roles/cloudkms.cryptoKeyEncrypterDecrypter
       members:

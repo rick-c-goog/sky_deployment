@@ -9,7 +9,7 @@ metadata:
       cnrm.cloud.google.com/disable-dependent-services: "false"
       cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
     name: bigquery.googleapis.com
-    namespace: project-namespace # kpt-set: ${project-namespace}
+    namespace: projec-namespace # kpt-set: ${project-namespace}
 ---
 apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
 kind: Service
@@ -21,7 +21,7 @@ metadata:
       cnrm.cloud.google.com/disable-dependent-services: "false"
       cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
     name: bigquerystorage.googleapis.com
-    namespace: projects-namespace # kpt-set: ${projects-namespace}
+    namespace: project-namespace # kpt-set: ${project-namespace}
 ---
 apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
 kind: Service
@@ -33,7 +33,7 @@ metadata:
       cnrm.cloud.google.com/disable-dependent-services: "false"
       cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
     name: bigqueryreservation.googleapis.com
-    namespace: projects-namespace # kpt-set: ${projects-namespace}
+    namespace: project-namespace # kpt-set: ${project-namespace}
 ---
 apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
 kind: Service
@@ -45,7 +45,7 @@ metadata:
       cnrm.cloud.google.com/disable-dependent-services: "false"
       cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
     name: pubsub.googleapis.com
-    namespace: projects-namespace # kpt-set: ${projects-namespace}
+    namespace: project-namespace # kpt-set: ${project-namespace}
 ---
 apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
 kind: Service
@@ -57,7 +57,7 @@ metadata:
       cnrm.cloud.google.com/disable-dependent-services: "false"
       cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
     name: cloudresourcemanager.googleapis.com
-    namespace: projects-namespace # kpt-set: ${projects-namespace}
+    namespace: project-namespace # kpt-set: ${project-namespace}
 ---
 apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
 kind: Service
@@ -69,7 +69,7 @@ metadata:
       cnrm.cloud.google.com/disable-dependent-services: "false"
       cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
     name: storage-api.googleapis.com
-    namespace: projects-namespace # kpt-set: ${projects-namespace}
+    namespace: project-namespace # kpt-set: ${project-namespace}
 ---
 apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
 kind: Service
@@ -81,4 +81,4 @@ metadata:
       cnrm.cloud.google.com/disable-dependent-services: "false"
       cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
     name: cloudkms.googleapis.com
-    namespace: projects-namespace # kpt-set: ${projects-namespace}
+    namespace: project-namespace # kpt-set: ${project-namespace}

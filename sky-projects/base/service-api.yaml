@@ -8,7 +8,7 @@ metadata:
       cnrm.cloud.google.com/disable-dependent-services: "false"
       cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
     name: logging.googleapis.com
-    namespace: projects-namespace # kpt-set: ${projects-namespace}
+    namespace: project-namespace # kpt-set: ${project-namespace}
     
 ---
 apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
@@ -21,5 +21,5 @@ metadata:
       cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
       cnrm.cloud.google.com/disable-dependent-services: "false"
     name: monitoringe.googleapis.com
-    namespace: projects-namespace # kpt-set: ${projects-namespace}
+    namespace: project-namespace # kpt-set: ${project-namespace}
 # To DO: append other service API needs to be enabled

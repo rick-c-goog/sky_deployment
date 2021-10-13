@@ -18,4 +18,4 @@ metadata:
       # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
       cnrm.cloud.google.com/disable-dependent-services: "false"
     name: bigqueryreservation.googleapis.com
-    namespace: project-id # kpt-set: ${project-id}
+    namespace: project-namespace # kpt-set: ${project-namespace}

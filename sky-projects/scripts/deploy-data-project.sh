@@ -13,9 +13,11 @@ kpt pkg get https://$githubtoken@github.com/rick-c-goog/sky_deployment.git/sky-p
 cd $project_id
 envsubst < "./setters.yaml.template" >  "setters.yaml"
 
+sleep 180
 
 kpt pkg get https://$githubtoken@github.com/rick-c-goog/sky_deployment.git/sky-projects/bigquery@main ./bigquery
 cd bigquery
+export data_project_number=$(gcloud projects describe ${project_id} --format='get(projectNumber)')
 export data_admin_group="data-admin@rickruguichen.altostrat.com"
 export data_editor_group="data-editor@rickruguichen.altostrat.com"
 export data_viewer_group="data-viewer@rickruguichen.altostrat.com"

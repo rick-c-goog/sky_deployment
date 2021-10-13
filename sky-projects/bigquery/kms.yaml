@@ -16,13 +16,13 @@ apiVersion: kms.cnrm.cloud.google.com/v1beta1
 kind: KMSCryptoKey
 metadata:
     labels:
-      key-one: bq-ds-key
-    name: bq-ds-key
+      key-one: bq-ds-key-project-id # kpt-set: bq-ds-key-${project-id}
+    name: bq-ds-key-project-id # kpt-set: bq-ds-key-${project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     keyRingRef:
-      name: bq-key-ring
-    purpose: ASYMMETRIC_SIGN
+      name: bq-key-ring-project-id # kpt-set: bq-key-ring-${project-id}
+    purpose: ENCRYPT_DECRYPT
     versionTemplate:
       algorithm: EC_SIGN_P384_SHA384
       protectionLevel: SOFTWARE
@@ -32,13 +32,13 @@ apiVersion: kms.cnrm.cloud.google.com/v1beta1
 kind: KMSCryptoKey
 metadata:
     labels:
-      key-one: bq-table-key
-    name: bq-table-key
+      key-one: bq-table-key-project-id # kpt-set: bq-table-key-${project-id}
+    name: bq-table-key-project-id # kpt-set: bq-table-key-${project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     keyRingRef:
-      name: bq-key-ring
-    purpose: ASYMMETRIC_SIGN
+      name: bq-key-ring-project-id # kpt-set: bq-key-ring-${project-id}
+    purpose: ENCRYPT_DECRYPT
     versionTemplate:
       algorithm: EC_SIGN_P384_SHA384
       protectionLevel: SOFTWARE
@@ -46,7 +46,25 @@ spec:
 apiVersion: kms.cnrm.cloud.google.com/v1beta1
 kind: KMSKeyRing
 metadata:
-    name: bq-key-ring
+    name: bq-key-ring-project-id # kpt-set: bq-key-ring-${project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
-    location: us-central1
+    location: data-location # kpt-set: ${data-location}
+
+---
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPartialPolicy
+metadata: # kpt-merge: config-control/logging-sa-iam-permissions
+  name: dataset-kms-binding-project-id # kpt-set: dataset-kms-binding-${project-id}
+  namespace: project-namespace # kpt-set: ${project-namespace}
+  annotations:
+    cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
+spec:
+  resourceRef:
+    apiVersion: kms.cnrm.cloud.google.com/v1beta1
+    kind: KMSCryptoKey
+    external: bq-key-ring-project-id/cryptoKeys/bq-ds-key-project-id # kpt-set:  bq-key-ring-${project-id}/cryptoKeys/bq-ds-key-${project-id}
+  bindings:
+    - role: roles/cloudkms.cryptoKeyEncrypterDecrypter
+      members:
+        - member: serviceAccount:bq-data-project-number@bigquery-encryption.iam.gserviceaccount.com # kpt-set: serviceAccount:bq-${data-project-number}@bigquery-encryption.iam.gserviceaccount.com

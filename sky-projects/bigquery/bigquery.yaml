@@ -9,7 +9,7 @@
 apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
 kind: BigQueryDataset
 metadata: # kpt-merge: logging/bqlogexportdataset
-  name: bq-dataset-name # kpt-set: ${bq-dataset-name}
+  name: bq-dataset-name-project-id # kpt-set: ${bq-dataset-name}-${project-id}
   annotations:
   namespace: project-namespace # kpt-set: ${project-namespace}
   annotations:
@@ -20,19 +20,19 @@ spec:
   defaultTableExpirationMs: 3600000 
   description: "Sample BigQuery dataset" 
   friendlyName: Sample BigQuery data 
-  location: US 
+  location: data-location # kpt-set: ${data-location}
   #access:
   #- role: roles/dataset.reader
   #  groupByEmail: "data-job-group" # kpt-set: group:${data-job-group}
-  #defaultEncryptionConfiguration:
-  #  kmsKeyRef:
-  #    name: bq-ds-key
-  #    namespace: project-id # kpt-set: ${project-id}
+  defaultEncryptionConfiguration:
+    kmsKeyRef:
+      name: bq-ds-key-project-id # kpt-set: bq-ds-key-${project-id}
+      namespace: project-namespace # kpt-set: ${project-namespace}
 ---
 apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
 kind: BigQueryTable
 metadata:
-    name: bq-datatable-name # kpt-set: ${bq-datatable-name}
+    name: bq-datatable-name-project-id # kpt-set: ${bq-datatable-name}-${project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
     annotations:
       cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
@@ -42,7 +42,7 @@ metadata:
 spec:
     description: "BigQuery Sample Table"
     datasetRef:
-      name: bq-dataset-name # kpt-set: ${bq-dataset-name} 
+      name: bq-dataset-name-project-id # kpt-set: ${bq-dataset-name}-${project-id}
     friendlyName: bigquerytable-sample
     externalDataConfiguration:
       autodetect: true

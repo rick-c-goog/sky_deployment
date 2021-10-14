@@ -4,7 +4,7 @@ metadata:
     annotations:
       # Replace ${PROJECT_ID?} with your project ID
       cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
-    name: datareservationroleproject_number # kpt-set: datareservationrole${project_number}
+    name: datareservationroleproject-number # kpt-set: datareservationrole${project-number}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     title: Slot Reservation Custom Role

@@ -11,7 +11,7 @@ spec:
     kind: Project
     external: projects/project-id # kpt-set: projects/${project-id}
   bindings:
-    - role: projects/project-id/roles/datajobrole # kpt-set: projects/${project-id}/roles/datajobrole
+    - role: projects/project-id/roles/datajobroleproject-number # kpt-set: projects/${project-id}/roles/datajobrole${project-number}
       members:
         - member: "group:data-job-group" # kpt-set: group:${data-job-group}
 ---

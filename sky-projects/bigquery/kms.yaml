@@ -68,4 +68,4 @@ spec:
   bindings:
     - role: roles/cloudkms.cryptoKeyEncrypterDecrypter
       members:
-        - member: serviceAccount:bq-data-project-number@bigquery-encryption.iam.gserviceaccount.com # kpt-set: serviceAccount:bq-${data-project-number}@bigquery-encryption.iam.gserviceaccount.com
+        - member: serviceAccount:bq-project-number@bigquery-encryption.iam.gserviceaccount.com # kpt-set: serviceAccount:bq-${project-number}@bigquery-encryption.iam.gserviceaccount.com

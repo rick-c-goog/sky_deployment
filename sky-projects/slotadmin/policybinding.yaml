@@ -11,7 +11,7 @@ spec:
     kind: Project
     external: projects/project-id # kpt-set: projects/${project-id}
   bindings:
-    - role: projects/project-id/roles/datareservationrole # kpt-set: projects/${project-id}/roles/datareservationrole
+    - role: projects/project-id/roles/datareservationroleprojet-number # kpt-set: projects/${project-id}/roles/datareservationrole${project-number}
       members:
         - member: "group:data-reservation-group" # kpt-set: group:${data-reservation-group}
 ---

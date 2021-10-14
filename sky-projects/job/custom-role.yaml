@@ -4,7 +4,7 @@ metadata:
     annotations:
       # Replace ${PROJECT_ID?} with your project ID
       cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
-    name: datajobrole
+    name: datajobroleproject-number # kpt-set: datajobrole${project-number}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     title: Data Job Custom Role

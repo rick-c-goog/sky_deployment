@@ -18,7 +18,7 @@ metadata: # kpt-merge: /setters
   name: setters
 data:
   #project number, for kms enablement
-  data-project-number: ${data_project_number}
+  project-number: ${project_number}
   #bigquery dataset name
   bq-dataset-name: ${bq_dataset_name}
   #bigquery datatable name

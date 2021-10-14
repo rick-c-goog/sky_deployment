@@ -23,6 +23,7 @@ sleep 180
 kpt pkg get https://$githubtoken@github.com/rick-c-goog/sky_deployment.git/sky-projects/slotadmin@main ./slotadmin
 
 cd slotadmin
+gcloud config set project $management_project_id
 export data_reservation_group="data-reservation@rickruguichen.altostrat.com"
 export project_number=$(gcloud projects describe ${project_id} --format='get(projectNumber)')
 envsubst < "./setters.yaml.template" >  "setters.yaml"

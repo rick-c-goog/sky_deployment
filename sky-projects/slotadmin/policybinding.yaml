@@ -1,7 +1,7 @@
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPartialPolicy
 metadata: # kpt-merge: config-control/logging-sa-iam-permissions
-  name: data-job-role-binding
+  name: data-reservation-role-binding-project-id # kpt-set: data-reservation-role-binding-${project-id}
   namespace: project-namespace # kpt-set: ${project-namespace}
   annotations:
     cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
@@ -11,14 +11,15 @@ spec:
     kind: Project
     external: projects/project-id # kpt-set: projects/${project-id}
   bindings:
-    - role: projects/project-id/roles/datajobrole # kpt-set: projects/${project-id}/roles/datajobrole
+    - role: projects/project-id/roles/datareservationrole # kpt-set: projects/${project-id}/roles/datareservationrole
       members:
-        - member: "group:data-job-group" # kpt-set: group:${data-job-group}
+        - member: "group:data-reservation-group" # kpt-set: group:${data-reservation-group}
 ---
+
 apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPartialPolicy
 metadata: # kpt-merge: config-control/logging-sa-iam-permissions
-  name: project-get-access
+  name: project-get-access-project-id  # kpt-set: project-get-access-${project-id}
   namespace: project-namespace # kpt-set: ${project-namespace}
   annotations:
     cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
@@ -30,6 +31,6 @@ spec:
   bindings:
     - role: roles/browser 
       members:
-        - member: "group:data-job-group" # kpt-set: group:${data-job-group}
-        
+        - member: "group:data-reservation-group" # kpt-set: group:${data-reservation-group}
+
        

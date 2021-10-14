@@ -19,33 +19,4 @@ spec:
     stage: GA
 
 ---
-apiVersion: iam.cnrm.cloud.google.com/v1beta1
-kind: IAMCustomRole
-metadata:
-    annotations:
-      # Replace ${PROJECT_ID?} with your project ID
-      cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
-    name: datareservationrole
-    namespace: project-namespace # kpt-set: ${project-namespace}
-spec:
-    title: Slot Reservation Custom Role
-    description: Slot Reservation Custom Role
-    permissions:
-      - bigquery.bireservations.get
-      - bigquery.bireservations.update
-      - bigquery.capacityCommitments.create
-      - bigquery.capacityCommitments.delete
-      - bigquery.capacityCommitments.get
-      - bigquery.capacityCommitments.list
-      - bigquery.capacityCommitments.update
-      - bigquery.reservations.create
-      - bigquery.reservations.get
-      - bigquery.reservations.delete
-      - bigquery.reservations.update
-      - bigquery.reservations.list
-      - bigquery.reservationAssignments.create
-      - bigquery.reservationAssignments.delete
-      - bigquery.reservationAssignments.list
-      - bigquery.reservationAssignments.search
-    stage: GA
----
+

@@ -17,10 +17,8 @@ kind: ConfigMap
 metadata: # kpt-merge: /setters
   name: setters
 data:
-  
   #project number, for kms enablement
   project-number: ${project_number}
-  #full email address for data admin group
-  data-job-group: "${data_job_group}"
-  
+  #full email address for data  group
+  data-reservation-group: "${data_reservation_group}"
   

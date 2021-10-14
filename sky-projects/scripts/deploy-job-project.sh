@@ -20,10 +20,11 @@ git push
 
 
 sleep 180
+cd $deployment_dir/$project_id
 kpt pkg get https://$githubtoken@github.com/rick-c-goog/sky_deployment.git/sky-projects/job@main ./job
 
 cd job
-gcloud config set project $management_project_id
+gcloud confdig set project $management_project_id
 export data_job_group="data-job@rickruguichen.altostrat.com"
 export project_number=$(gcloud projects describe ${project_id} --format='get(projectNumber)')
 envsubst < "./setters.yaml.template" >  "setters.yaml"

@@ -3,7 +3,7 @@ kind: Project
 metadata:
 annotations:
       # Replace "${ORG_ID?}" with the numeric ID for your folder
-      cnrm.cloud.google.com/organization-id: org-id  # kpt-set: ${org-id}
+      cnrm.cloud.google.com/organization-id: org-id # kpt-set: ${org-id}
     name: resourcemanagerpolicy-slotadmin-project-id # kpt-set: resourcemanagerpolicy-slotadmin-${project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:

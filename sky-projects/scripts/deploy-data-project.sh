@@ -32,7 +32,7 @@ export bq_datatable_name=bqsampledatatable
 export data_location=US
 
 envsubst < "./setters.yaml.template" >  "setters.yaml"
-cd $deployment_dir
+cd $deployment_dir/$project_id
 git add .
 git commit -m "create project project id: $project_id"
 git push

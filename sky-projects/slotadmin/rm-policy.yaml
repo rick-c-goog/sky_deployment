@@ -1,7 +1,7 @@
 apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
 kind: Project
 metadata:
-annotations:
+    annotations:
       # Replace "${ORG_ID?}" with the numeric ID for your folder
       cnrm.cloud.google.com/organization-id: org-id # kpt-set: ${org-id}
     name: resourcemanagerpolicy-slotadmin-project-id # kpt-set: resourcemanagerpolicy-slotadmin-${project-id}

@@ -1,5 +1,5 @@
 deployment_dir=$HOME/source-repo/sky-projects
-export project_id=sky-slot-$RANDOM
+export project_id=sky-slot-admin-$RANDOM
 export sky_team_name=sky-test
 export billing_account_id=011552-7DA53C-81003E
 export projects_namespace=projects

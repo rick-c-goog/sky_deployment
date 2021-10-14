@@ -33,5 +33,4 @@ data:
   data-job-group: "${data_job_group}"
   # dataset location
   data-location: ${data_location}
-  # kms key location
-  kms-key-location: ${kms_key_location}
+  

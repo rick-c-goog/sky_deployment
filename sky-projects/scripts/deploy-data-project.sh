@@ -25,7 +25,6 @@ export data_job_group="data-job@rickruguichen.altostrat.com"
 export bq_dataset_name=bqsampledataset
 export bq_datatable_name=bqsampledatatable
 export data_location=US
-export kms_key_location=us-central1
 
 envsubst < "./setters.yaml.template" >  "setters.yaml"
 cd $deployment_dir

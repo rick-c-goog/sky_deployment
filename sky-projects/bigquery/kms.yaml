@@ -49,7 +49,7 @@ metadata:
     name: bq-key-ring-project-id # kpt-set: bq-key-ring-${project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
-    location: data-location # kpt-set: ${data-location}
+    location: kms-key-location # kpt-set: ${kms-key-location}
 
 ---
 apiVersion: iam.cnrm.cloud.google.com/v1beta1

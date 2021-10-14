@@ -14,6 +14,8 @@ data:
   management-project-id: ${management_project_id}
   # This default is safe to keep
   management-namespace: ${management_namespace}
+
+  system-admin-group: ${system_admin_group}
   
 
 

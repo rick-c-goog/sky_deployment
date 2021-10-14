@@ -5,42 +5,11 @@ metadata:
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     # Replace ${PROJECT_ID?} with your project ID
-    member: serviceAccount:project-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:project-sa@${project-id}.iam.gserviceaccount.com
+    member: "group:system-admin-group" # kpt-set: group:${system-admin-group}
     # Replace ${PROJECT_ID?} with your project ID
     resourceRef:
      apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
      kind: Project
      external: projects/my-project-id # kpt-set: projects/${project-id}
     role: roles/owner
----
-apiVersion: iam.cnrm.cloud.google.com/v1beta1
-kind: IAMPolicyMember
-metadata:
-    name: editor-binding
-    namespace: project-namespace # kpt-set: ${project-namespace}
-spec:
-    # Replace ${PROJECT_ID?} with your project ID
-    member: serviceAccount:editor-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:editor-sa@${project-id}.iam.gserviceaccount.com
-    # Replace ${PROJECT_ID?} with your project ID
-    resourceRef:
-     apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
-     kind: Project
-     external: projects/my-project-id # kpt-set: projects/${project-id}
-    role: roles/editor
----
-
-apiVersion: iam.cnrm.cloud.google.com/v1beta1
-kind: IAMPolicyMember
-metadata:
-    name: viewer-binding
-    namespace: project-namespace # kpt-set: ${project-namespace}
-spec:
-    # Replace ${PROJECT_ID?} with your project ID
-    member: serviceAccount:viewer-sa@project-id.iam.gserviceaccount.com # kpt-set: serviceAccount:viewer-sa@${project-id}.iam.gserviceaccount.com
-    # Replace ${PROJECT_ID?} with your project ID
-    resourceRef:
-     apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
-     kind: Project
-     external: projects/my-project-id # kpt-set: projects/${project-id}
-    role: roles/viewer
 ---

@@ -8,22 +8,25 @@ export projects_namespace=projects
 export management_project_id=rick-multi-tenancy
 export management_namespace=config-control
 
-export data_project_id=XXXXXXX # replace data project reference
-export data_job_group="data-job@rickruguichen.altostrat.com"
-export data_reservation_group="data-reservation@rickruguichen.altostrat.com"
-export bq_dataset_name=bqsampledataset
-export bq_datatable_name=bqsampledatatable
 
 cd $deployment_dir
 kpt pkg get https://$githubtoken@github.com/rick-c-goog/sky_deployment.git/sky-projects/base@main ./$project_id
 cd $project_id
 envsubst < "./setters.yaml.template" >  "setters.yaml"
+cd $deployment_dir
+git add .
+git commit -m "create project project id: $project_id"
+git push
 
 
+sleep 180
 kpt pkg get https://$githubtoken@github.com/rick-c-goog/sky_deployment.git/sky-projects/job@main ./job
-cd job
 
+cd job
+export data_job_group="data-job@rickruguichen.altostrat.com"
+export project_number=$(gcloud projects describe ${project_id} --format='get(projectNumber)')
 envsubst < "./setters.yaml.template" >  "setters.yaml"
+
 cd $deployment_dir
 git add .
 git commit -m "create slot project project id: $project_id"

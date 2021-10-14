@@ -7,7 +7,7 @@ export project_namespace=$project_id
 export projects_namespace=projects
 export management_project_id=rick-multi-tenancy
 export management_namespace=config-control
-
+export system_admin_group="gcp-org-admins@rickruguichen.altostrat.com"
 githubtoken=xxxxxx
 cd $deployment_dir
 kpt pkg get https://$githubtoken@github.com/rick-c-goog/sky_deployment.git/sky-projects/base@main ./$project_id

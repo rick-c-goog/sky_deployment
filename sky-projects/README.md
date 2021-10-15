@@ -16,10 +16,21 @@ KPT package to create BigQuery projects.
 |Data Project  | Data Viewer   |Read Dataset, tables, views etc.  |Application team data consumers |
 |Compute Project  |Job User |Create, run jobs/queries   |Application team data producers and consumers |
 
-## Package:
-Include kpt packages:
-###
-base
+## Packages:
+kpt packages:
+### base: 
+base level project settings, always start with this one, and apply one of data,job,slotadmin package after base
+Includes auditlog setttings, enable logging, monitoring service API. logging, monitoring should be set later on
+Includes a system admin
+### data:
+BigQuery sample dataset, and sample table
+### job
+
+### slotadmin
+
+## setters
+| Package     | Setter | Description |
+| ---        |    ----   | ----   |
 
 
 

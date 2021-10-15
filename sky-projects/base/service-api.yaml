@@ -6,13 +6,11 @@ metadata:
       cnrm.cloud.google.com/deletion-policy: "abandon"
       # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
       cnrm.cloud.google.com/disable-dependent-services: "false"
+      cnrm.cloud.google.com/project-id: my-project-id # kpt-set: ${project-id}
     name: logging-project-id # kpt-set: logging-$project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     resourceID: logging.googleapis.com
-    projectRef:
-      name: project-id # kpt-set: ${project-id}
-      namespace: projects-namespace # kpt-set: ${projects-namespace}
     
 ---
 apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
@@ -23,11 +21,10 @@ metadata:
       cnrm.cloud.google.com/deletion-policy: "abandon"
       # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
       cnrm.cloud.google.com/disable-dependent-services: "false"
+      cnrm.cloud.google.com/project-id: my-project-id # kpt-set: ${project-id}
     name: monitoringe-project-id # kpt-set: monitoringe-${project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     resourceID: monitoringe.googleapis.com
-    projectRef:
-      name: project-id # kpt-set: ${project-id}
-      namespace: projects-namespace # kpt-set: ${projects-namespace}
+    
 # To DO: append other service API needs to be enabled

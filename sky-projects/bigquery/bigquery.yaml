@@ -43,6 +43,7 @@ spec:
     description: "BigQuery Sample Table"
     datasetRef:
       name: bq-dataset-nameproject-number # kpt-set: ${bq-dataset-name}${project-number}
+      namespace: project-namespace # kpt-set: ${project-namespace}
     friendlyName: bigquerytable-sample
     externalDataConfiguration:
       autodetect: true

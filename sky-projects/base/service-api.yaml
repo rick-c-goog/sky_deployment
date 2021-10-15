@@ -25,6 +25,6 @@ metadata:
     name: monitoringe-project-id # kpt-set: monitoringe-${project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
-    resourceID: monitoringe.googleapis.com
+    resourceID: monitoring.googleapis.com
     
 # To DO: append other service API needs to be enabled

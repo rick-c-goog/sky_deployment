@@ -46,6 +46,9 @@ spec:
 apiVersion: kms.cnrm.cloud.google.com/v1beta1
 kind: KMSKeyRing
 metadata:
+    annotations:
+       cnrm.cloud.google.com/blueprint: cnrm/landing-zone/v0.4.0
+       cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
     name: bq-key-ring-project-id # kpt-set: bq-key-ring-${project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:

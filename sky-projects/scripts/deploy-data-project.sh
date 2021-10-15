@@ -1,8 +1,8 @@
 deployment_dir=$HOME/source-repo/sky-projects
 export project_id=sky-data-$RANDOM
-export sky_team_name=sky-test
+export sky_team_name=sky-credit-risk
 export billing_account_id=011552-7DA53C-81003E
-export project_namespace=$project_id
+export project_namespace=sky-credit-risk
 export projects_namespace=projects
 export management_project_id=rick-multi-tenancy
 export system_admin_group="gcp-org-admins@rickruguichen.altostrat.com"

@@ -28,7 +28,7 @@ spec:
     kind: Project
     external: projects/project-id # kpt-set: projects/${project-id}
   bindings:
-    - role: projects/project-id/roles/dataeditorroleproject-number # kpt-set: projects/${project-id}/roles/dataeditorrole{project-number}
+    - role: projects/project-id/roles/dataeditorroleproject-number # kpt-set: projects/${project-id}/roles/dataeditorrole${project-number}
       members:
         - member: "group:data-editor-group" # kpt-set: group:${data-editor-group}
 ---
@@ -45,7 +45,7 @@ spec:
     kind: Project
     external: projects/project-id # kpt-set: projects/${project-id}
   bindings:
-    - role: projects/project-id/roles/datavierroleproject-number # kpt-set: projects/${project-id}/roles/dataviewerrole{project-number}
+    - role: projects/project-id/roles/datavierroleproject-number # kpt-set: projects/${project-id}/roles/dataviewerrole${project-number}
       members:
         - member: "group:data-viwer-group" # kpt-set: group:${data-viewer-group}
 ---
@@ -81,7 +81,7 @@ spec:
     kind: Project
     external: projects/project-id # kpt-set: projects/${project-id}
   bindings:
-    - role: projects/project-id/roles/datajobroleproject-number # kpt-set: projects/${project-id}/roles/datajobrole{project-number}
+    - role: projects/project-id/roles/datajobroleproject-number # kpt-set: projects/${project-id}/roles/datajobrole${project-number}
       members:
         - member: "group:data-job-group" # kpt-set: group:${data-job-group}
 ---

@@ -18,7 +18,7 @@ git push
 sleep 180
 
 cd $deployment_dir/$project_id
-kpt pkg get h$source_repo/sky-projects/bigquery@main ./bigquery
+kpt pkg get $source_repo/sky-projects/bigquery@main ./bigquery
 cd bigquery
 gcloud config set project $management_project_id
 export project_number=$(gcloud projects describe ${project_id} --format='get(projectNumber)')

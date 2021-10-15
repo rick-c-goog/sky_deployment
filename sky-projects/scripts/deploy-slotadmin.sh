@@ -1,15 +1,11 @@
 deployment_dir=$HOME/source-repo/sky-projects
-export project_id=sky-slot-admin-$RANDOM
+export project_id=sky-data-$RANDOM
 export sky_team_name=sky-test
 export billing_account_id=011552-7DA53C-81003E
-export projects_namespace=projects
 export project_namespace=$project_id
 export projects_namespace=projects
-export management_project_id=rick-multi-tenancy
-export management_namespace=config-control
 export system_admin_group="gcp-org-admins@rickruguichen.altostrat.com"
-githubtoken=xxxxxx
-
+source_repo=https://$githubtoken@github.com/rick-c-goog/sky_deployment.git
 cd $deployment_dir
 kpt pkg get $source_repo/sky-projects/base@main ./$project_id
 cd $project_id

@@ -9,7 +9,7 @@
 apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
 kind: BigQueryDataset
 metadata: # kpt-merge: logging/bqlogexportdataset
-  name: bq-dataset-name # kpt-set: ${bq-dataset-name}
+  name: bq-dataset-nameproject-number # kpt-set: ${bq-dataset-name}${project-number}
   annotations:
   namespace: project-namespace # kpt-set: ${project-namespace}
   annotations:
@@ -42,7 +42,7 @@ metadata:
 spec:
     description: "BigQuery Sample Table"
     datasetRef:
-      name: bq-dataset-name # kpt-set: ${bq-dataset-name}
+      name: bq-dataset-nameproject-number # kpt-set: ${bq-dataset-name}${project-number}
     friendlyName: bigquerytable-sample
     externalDataConfiguration:
       autodetect: true

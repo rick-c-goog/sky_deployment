@@ -10,7 +10,7 @@ export management_namespace=config-control
 export system_admin_group="gcp-org-admins@rickruguichen.altostrat.com"
 githubtoken=xxxxxx
 cd $deployment_dir
-kpt pkg get https://$githubtoken@github.com/rick-c-goog/sky_deployment.git/sky-projects/base@main ./$project_id
+kpt pkg get $source_repo/sky-projects/base@main ./$project_id
 cd $project_id
 envsubst < "./setters.yaml.template" >  "setters.yaml"
 cd $deployment_dir
@@ -21,7 +21,7 @@ git push
 
 sleep 180
 cd $deployment_dir/$project_id
-kpt pkg get https://$githubtoken@github.com/rick-c-goog/sky_deployment.git/sky-projects/job@main ./job
+kpt pkg get $source_repo/sky-projects/job@main ./job
 
 cd job
 gcloud config set project $management_project_id

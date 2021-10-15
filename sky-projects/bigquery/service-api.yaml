@@ -7,11 +7,13 @@ metadata:
       cnrm.cloud.google.com/deletion-policy: "abandon"
       # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
       cnrm.cloud.google.com/disable-dependent-services: "false"
-      cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
     name: bigquery-project-id # kpt-set: bigquery-${project-id}
     namespace: projec-namespace # kpt-set: ${project-namespace}
 spec:
     resourceID: bigquery.googleapis.com
+    projectRef:
+      name: project-id # kpt-set: ${project-id}
+      namespace: projects-namespace # kpt-set: ${projects-namespace}
 ---
 apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
 kind: Service
@@ -21,11 +23,13 @@ metadata:
       cnrm.cloud.google.com/deletion-policy: "abandon"
       # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
       cnrm.cloud.google.com/disable-dependent-services: "false"
-      cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
     name: bigquerystorage-project-id # kpt-set: bigquerystorage-$project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     resourceID: bigquerystorage.googleapis.com
+    projectRef:
+      name: project-id # kpt-set: ${project-id}
+      namespace: projects-namespace # kpt-set: ${projects-namespace}
 ---
 apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
 kind: Service
@@ -35,11 +39,13 @@ metadata:
       cnrm.cloud.google.com/deletion-policy: "abandon"
       # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
       cnrm.cloud.google.com/disable-dependent-services: "false"
-      cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
     name: cloudresourcemanager-project-id # kpt-set: cloudresourcemanager-${project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     resourceID: cloudresourcemanager.googleapis.com
+    projectRef:
+      name: project-id # kpt-set: ${project-id}
+      namespace: projects-namespace # kpt-set: ${projects-namespace}
 ---
 apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
 kind: Service
@@ -49,11 +55,13 @@ metadata:
       cnrm.cloud.google.com/deletion-policy: "abandon"
       # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
       cnrm.cloud.google.com/disable-dependent-services: "false"
-      cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
     name: storage-api-project-id # kpt-set: storage-api-${project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     resourceID: storage-api.googleapis.com
+    projectRef:
+      name: project-id # kpt-set: ${project-id}
+      namespace: projects-namespace # kpt-set: ${projects-namespace}
 ---
 apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
 kind: Service
@@ -63,8 +71,10 @@ metadata:
       cnrm.cloud.google.com/deletion-policy: "abandon"
       # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
       cnrm.cloud.google.com/disable-dependent-services: "false"
-      cnrm.cloud.google.com/project-id: project-id # kpt-set: ${project-id}
     name: cloudkms-project-id # kpt-set: cloudkms-{project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     resourceID: cloudkms.googleapis.com
+    projectRef:
+      name: project-id # kpt-set: ${project-id}
+      namespace: projects-namespace # kpt-set: ${projects-namespace}

@@ -6,8 +6,13 @@ metadata:
       cnrm.cloud.google.com/deletion-policy: "abandon"
       # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
       cnrm.cloud.google.com/disable-dependent-services: "false"
-    name: bigquery.googleapis.com
-    namespace: project-namespace # kpt-set: ${project-namespace}
+    name: bigquery-project-id # kpt-set: bigquery-{project-id}
+spec:
+    resourceID: bigquery.googleapis.com
+    projectRef:
+      name: project-id # kpt-set: ${project-id}
+      namespace: projects-namespace # kpt-set: ${projects-namespace}
+
 ---
 apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1
 kind: Service
@@ -17,5 +22,9 @@ metadata:
       cnrm.cloud.google.com/deletion-policy: "abandon"
       # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
       cnrm.cloud.google.com/disable-dependent-services: "false"
-    name: bigqueryreservation.googleapis.com
-    namespace: project-namespace # kpt-set: ${project-namespace}
+    name: bigqueryreservation-project-id # kpt-set: bigqueryreservation-{project-id}
+spec:
+    resourceID: bigqueryreservation.googleapis.com
+    projectRef:
+      name: project-id # kpt-set: ${project-id}
+      namespace: projects-namespace # kpt-set: ${projects-namespace}

@@ -10,7 +10,7 @@ KPT package to create BigQuery projects.
 
 | Proj Type     | Role | Permissions | Group |
 | ---        |    ----   | ----   | ----   | 
-|BigQuery Admin Project  | Admin   Create/update/delete slot commitments, create/update/delete reservations, assign reservations, IAM roles mgmt |Cloud enablement team admin  | 
+|BigQuery Admin Project  | Admin   |Create/update/delete slot commitments, create/update/delete reservations, assign reservations, IAM roles mgmt |Cloud enablement team admin  | 
 |Data Project  | Data Admin |Create, delete, manage datasets, row-level, column level policies,encrypt/decrypt, key management  | Application team data admins   |
 |Data Project  |Data Editor  |Create tables, read/write/update data, change columns, encrypt/decrypt  |Application team data producers  |
 |Data Project  | Data Viewer   |Read Dataset, tables, views etc.  |Application team data consumers |

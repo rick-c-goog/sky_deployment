@@ -36,6 +36,7 @@ metadata:
     namespace: project-namespace # kpt-set: ${project-namespace}
     annotations:
       cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
+      cnrm.cloud.google.com/project-id: my-project-id # kpt-set: ${project-id}
     labels:
       data-source: "external"
       schema-type: "auto-junk"

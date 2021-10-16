@@ -77,7 +77,7 @@ Assumption for the scripts:
 1. there is an exisitng directory to hold your source repo, and can kick off the blueprint cloud build job after git code push
 2. have GCP sdk installed
 3. gcloud config set project management_project ( use this project to access the project created)
-3. each project have 2 steps, first step to commit and push code to create base project. And it will wait for 3 minutes to get the project number of base project provisioned through the management project, this is necessary to retrieve project number. 
+3. each project have 2 steps, first step to commit and push code to create base project. And it will wait for 3 minutes to get the project number of base project provisioned through the management project, this is necessary to retrieve project number. The second step will get the add-on package on top of the base project and do another code commit push, kick off the cloud build pipeline job. 
 
 
 

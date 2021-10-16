@@ -7,7 +7,7 @@ metadata:
       # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
       cnrm.cloud.google.com/disable-dependent-services: "false"
       cnrm.cloud.google.com/project-id: my-project-id # kpt-set: ${project-id}
-    name: bigquery-project-id # kpt-set: bigquery-{project-id}
+    name: bigquery-project-id # kpt-set: bigquery-${project-id}
 spec:
     resourceID: bigquery.googleapis.com
 ---

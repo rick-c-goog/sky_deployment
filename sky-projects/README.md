@@ -48,7 +48,7 @@ Setters:
 |data-editor-group | full email address for data editor group |
 |data-viewer-group | full email address for data viewer group |
 |data-job-group |full email address for data job group |
-  
+
 ### job
 Add on package for compute/job project, 
 Only include one user group to access the project 
@@ -65,7 +65,6 @@ Setters:
 |project-number | Project number from base pakcage execution|
 |data-reservation-group |full email address for data admin group |
 
-
 ## Usage:
 There are shell scripts under sky-poroject/scripts folder,to create different type of projects: 
 1. create-data-project.sh
@@ -77,8 +76,9 @@ Assumption for the scripts:
 1. there is an exisitng directory to hold your source repo, and can kick off the blueprint cloud build job after git code push
 2. have GCP sdk installed
 3. gcloud config set project management_project ( use this project to access the project created)
-3. each project have 2 steps, first step to commit and push code to create base project. And it will wait for 3 minutes to get the project number of base project provisioned through the management project, this is necessary to retrieve project number. The second step will get the add-on package on top of the base project and do another code commit push, kick off the cloud build pipeline job. 
-
+4. each project have 2 steps, first step to commit and push code to create base project. And it will wait for 3 minutes to get the project number of base project provisioned through the management project, this is necessary to retrieve project number. The second step will get the add-on package on top of the base project and do another code commit push, kick off the cloud build pipeline job. 
+5. each step use envsust command to override the setters.yaml.template file
+Note: feel free to use other mechanism to update the setters values and run the packages,  
 
 
 

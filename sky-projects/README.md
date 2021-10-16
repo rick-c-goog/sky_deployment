@@ -66,6 +66,22 @@ Setters:
 |data-reservation-group |full email address for data admin group |
 
 
+## Usage:
+There are shell scripts under sky-poroject/scripts folder,to create different type of projects: 
+1. create-data-project.sh
+2. create-job-prject.sh
+3. cereate-slotadmin-project.sh
+
+Make to modify the scripts' environment variables to match your environemnt. 
+Assumption for the scripts:
+1. there is an exisitng directory to hold your source repo, and can kick off the blueprint cloud build job after git code push
+2. have GCP sdk installed
+3. gcloud config set project management_project ( use this project to access the project created)
+3. each project have 2 steps, first step to commit and push code to create base project. And it will wait for 3 minutes to get the project number of base project provisioned through the management project, this is necessary to retrieve project number. 
+
+
+
+
 
 
 

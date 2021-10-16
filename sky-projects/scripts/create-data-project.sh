@@ -2,20 +2,17 @@
 deployment_dir=$HOME/source-repo/sky-projects
 export project_id=sky-data-$RANDOM
 export sky_team_name=sky-credit-risk
-export billing_account_id=011552-7DA53C-81003E
+export billing_account_id=XXXX-XXX-XXX
 export project_namespace=sky-credit-risk
 export projects_namespace=projects
-export management_project_id=rick-multi-tenancy
 export data_admin_group="data-admin@rickruguichen.altostrat.com"
 export data_editor_group="data-editor@rickruguichen.altostrat.com"
 export data_viewer_group="data-viewer@rickruguichen.altostrat.com"
 export data_job_group="data-job@rickruguichen.altostrat.com"
-export bq_dataset_name=bqsampledataset
-export bq_datatable_name=bqsampledatatable
 export data_location=us
 export system_admin_group="gcp-org-admins@rickruguichen.altostrat.com"
-source_repo=https://$githubtoken@github.com/rick-c-goog/sky_deployment.git
-
+source_repo=https://githubtoken@github.com/rick-c-goog/sky_deployment.git
+management_project_id=rick-multi-tenancy
 #run test data project creation
 cd $deployment_dir
 kpt pkg get $source_repo/sky-projects/base@main ./$project_id

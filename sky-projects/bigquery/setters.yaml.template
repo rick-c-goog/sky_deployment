@@ -17,7 +17,6 @@ kind: ConfigMap
 metadata: # kpt-merge: /setters
   name: setters
 data:
-  project-id: ${project_id}
   #project number, for kms enablement, and resource identifier can not append project-id
   project-number: ${project_number}
   #bigquery dataset name

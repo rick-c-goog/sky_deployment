@@ -1,15 +1,15 @@
-####set following variables
+####set environment vairables for setters file
 deployment_dir=$HOME/source-repo/sky-projects
 export project_id=sky-data-$RANDOM
-export sky_team_name=sky-test
-export billing_account_id=011552-7DA53C-81003E
-export project_namespace=$project_id
+export sky_team_name=sky-credit-risk
+export billing_account_id=XXXX-XXX-XXX
+export project_namespace=sky-credit-risk
 export projects_namespace=projects
-export data_job_group="data-job@rickruguichen.altostrat.com"
 export system_admin_group="gcp-org-admins@rickruguichen.altostrat.com"
+export data_reservation_group="data-reservation@rickruguichen.altostrat.com"
 source_repo=https://$githubtoken@github.com/rick-c-goog/sky_deployment.git
-
-##Run test scripts to create compute job projects
+management_project_id=rick-multi-tenancy # management project id
+###test to create data admin project
 cd $deployment_dir
 kpt pkg get $source_repo/sky-projects/base@main ./$project_id
 cd $project_id
@@ -22,11 +22,9 @@ git push
 ##wait for project number available
 sleep 180
 cd $deployment_dir/$project_id
-kpt pkg get $source_repo/sky-projects/job@main ./job
-
-cd job
+kpt pkg get $source_repo/sky-projects/slotadmin@main ./slotadmin
+cd slotadmin
 gcloud config set project $management_project_id
-
 export project_number=$(gcloud projects describe ${project_id} --format='get(projectNumber)')
 envsubst < "./setters.yaml.template" >  "setters.yaml"
 

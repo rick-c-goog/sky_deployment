@@ -17,7 +17,7 @@ kind: ConfigMap
 metadata: # kpt-merge: /setters
   name: setters
 data:
-  #project number, for kms enablement
+  #project number, resource identifier can not append project-id
   project-number: ${project_number}
   #full email address for data  group
   data-reservation-group: "${data_reservation_group}"

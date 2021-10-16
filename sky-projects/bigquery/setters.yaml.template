@@ -18,12 +18,12 @@ metadata: # kpt-merge: /setters
   name: setters
 data:
   project-id: ${project_id}
-  #project number, for kms enablement
+  #project number, for kms enablement, and resource identifier can not append project-id
   project-number: ${project_number}
   #bigquery dataset name
-  bq-dataset-name: ${bq_dataset_name}
+  bq-dataset-name: bqsampledataset
   #bigquery datatable name
-  bq-datatable-name: ${bq_datatable_name}
+  bq-datatable-name: bqsampletable
   #full email address for data admin group
   data-admin-group: "${data_admin_group}"
   #full email address for data editor group
@@ -32,6 +32,6 @@ data:
   data-viewer-group: "${data_viewer_group}"
   #full email address for data job run group
   data-job-group: "${data_job_group}"
-  # dataset location
+  # dataset location, us can be default
   data-location: ${data_location}
   

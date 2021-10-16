@@ -18,7 +18,7 @@ metadata: # kpt-merge: /setters
   name: setters
 data:
   
-  #project number, for kms enablement
+  #project number, for resource identifier can not append project-id
   project-number: ${project_number}
   #full email address for data admin group
   data-job-group: "${data_job_group}"

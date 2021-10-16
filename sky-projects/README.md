@@ -22,15 +22,53 @@ kpt packages:
 base level project settings, always start with this one, and apply one of data,job,slotadmin package after base
 Includes auditlog setttings, enable logging, monitoring service API. logging, monitoring should be set later on
 Includes a system admin
+
+Setters:
+| Setter | Description |
+|    ----   | ----   |
+|project-id  |project id |
+|sky-team-name |parent folder where project be created |
+|billing-account-id  |billing account id |
+|project-namespace  | existing namespace to hold project resources|
+|projects-namespace | existing namespace to hold project, projects namespace or parent folder namespace |
+|system-admin-group |full email address for system adim group |
+  
 ### data:
-BigQuery sample dataset, and sample table
+Add on package for BigQuery sample dataset, and sample table
+Include sample cloud KMS, and encrption with dataset, table level encrption will be inherited from dataset keys
+IAM permission for different roles which bind to user groups with different access permissions
+See the previous table for IAM details
+Setters:
+| Setter | Description |
+|    ----   | ----   |
+|project-number | Project number from base pakcage execution|
+|bq-dataset-name |sample bq dataset name|
+|bq-datatable-name |sample bq datatable name can use default|
+|data-admin-group |full email address for data admin group |
+|data-editor-group | full email address for data editor group |
+|data-viewer-group | full email address for data viewer group |
+|data-job-group |full email address for data job group |
+  
 ### job
-
+Add on package for compute/job project, 
+Only include one user group to access the project 
+Setters:
+| Setter | Description |
+|    ----   | ----   |
+|project-number | Project number from base pakcage execution|
+|data-job-group|full email address for data job group, this group need to be in both data and job projects |
 ### slotadmin
+Add package for data admin project, with commitment purchase, reservation management. 
+Setters:
+| Setter | Description |
+|    ----   | ----   |
+|project-number | Project number from base pakcage execution|
+|data-reservation-group |full email address for data admin group |
 
-## setters
-| Package     | Setter | Description |
-| ---        |    ----   | ----   |
+
+
+
+
 
 
 

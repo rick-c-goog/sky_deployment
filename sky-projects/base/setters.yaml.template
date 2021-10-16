@@ -4,14 +4,10 @@ metadata:
   name: setters
 data:
   project-id: ${project_id}
-  # These defaults can be kept
   sky-team-name: ${sky_team_name}
-
   billing-account-id: ${billing_account_id}
-  # This default is safe to keep
   project-namespace: ${project_namespace}
   projects-namespace: ${projects_namespace}
-
   system-admin-group: ${system_admin_group}
   
 

@@ -10,6 +10,9 @@ metadata:
     name: bigquery-project-id # kpt-set: bigquery-${project-id}
 spec:
     resourceID: bigquery.googleapis.com
+    projectRef:
+      name: project-id # kpt-set: ${project-id}
+      namespace: project-namespace # kpt-set: ${project-namespac
 ---
 
 apiVersion: serviceusage.cnrm.cloud.google.com/v1beta1

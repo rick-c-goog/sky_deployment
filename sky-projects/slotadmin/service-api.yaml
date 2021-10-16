@@ -22,4 +22,4 @@ metadata:
       cnrm.cloud.google.com/project-id: my-project-id # kpt-set: ${project-id}
     name: bigqueryreservation-project-id # kpt-set: bigqueryreservation-${project-id}
 spec:
-    resourceID: bigqueryreservation.googleapis
+    resourceID: bigqueryreservation.googleapis.com

@@ -22,7 +22,7 @@ metadata:
       # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
       cnrm.cloud.google.com/disable-dependent-services: "false"
       cnrm.cloud.google.com/project-id: my-project-id # kpt-set: ${project-id}
-    name: bigquerystorage-project-id # kpt-set: bigquerystorage-$project-id}
+    name: bigquerystorage-project-id # kpt-set: bigquerystorage-${project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     resourceID: bigquerystorage.googleapis.com
@@ -71,4 +71,3 @@ metadata:
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     resourceID: cloudkms.googleapis.com
-  

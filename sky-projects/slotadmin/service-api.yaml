@@ -8,6 +8,7 @@ metadata:
       cnrm.cloud.google.com/disable-dependent-services: "false"
       cnrm.cloud.google.com/project-id: my-project-id # kpt-set: ${project-id}
     name: bigquery-project-id # kpt-set: bigquery-${project-id}
+    namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     resourceID: bigquery.googleapis.com
 ---
@@ -21,5 +22,6 @@ metadata:
       cnrm.cloud.google.com/disable-dependent-services: "false"
       cnrm.cloud.google.com/project-id: my-project-id # kpt-set: ${project-id}
     name: bigqueryreservation-project-id # kpt-set: bigqueryreservation-${project-id}
+    namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     resourceID: bigqueryreservation.googleapis.com

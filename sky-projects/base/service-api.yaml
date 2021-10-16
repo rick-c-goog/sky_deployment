@@ -7,7 +7,7 @@ metadata:
       # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
       cnrm.cloud.google.com/disable-dependent-services: "false"
       cnrm.cloud.google.com/project-id: my-project-id # kpt-set: ${project-id}
-    name: logging-project-id # kpt-set: logging-$project-id}
+    name: logging-project-id # kpt-set: logging-${project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     resourceID: logging.googleapis.com
@@ -22,7 +22,7 @@ metadata:
       # this is unnecessary with the deletion-policy of 'abandon', but useful if the abandon policy is removed.
       cnrm.cloud.google.com/disable-dependent-services: "false"
       cnrm.cloud.google.com/project-id: my-project-id # kpt-set: ${project-id}
-    name: monitoringe-project-id # kpt-set: monitoringe-${project-id}
+    name: monitoring-project-id # kpt-set: monitoring-${project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     resourceID: monitoring.googleapis.com

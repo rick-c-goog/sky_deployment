@@ -41,6 +41,7 @@ See the previous table for IAM details
 Setters:
 | Setter | Description |
 |    ----   | ----   |
+|project-id |project ID|
 |project-number | Project number from base pakcage execution|
 |bq-dataset-name |sample bq dataset name|
 |bq-datatable-name |sample bq datatable name can use default|
@@ -55,6 +56,7 @@ Only include one user group to access the project
 Setters:
 | Setter | Description |
 |    ----   | ----   |
+|project-id |project ID|
 |project-number | Project number from base pakcage execution|
 |data-job-group|full email address for data job group, this group need to be in both data and job projects |
 ### slotadmin
@@ -62,6 +64,7 @@ Add package for data admin project, with commitment purchase, reservation manage
 Setters:
 | Setter | Description |
 |    ----   | ----   |
+|project-id |project ID|
 |project-number | Project number from base pakcage execution|
 |data-reservation-group |full email address for data admin group |
 

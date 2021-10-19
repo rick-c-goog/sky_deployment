@@ -10,7 +10,6 @@ apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
 kind: BigQueryDataset
 metadata: # kpt-merge: logging/bqlogexportdataset
   name: bq-dataset-nameproject-number # kpt-set: ${bq-dataset-name}${project-number}
-  annotations:
   namespace: project-namespace # kpt-set: ${project-namespace}
   annotations:
     cnrm.cloud.google.com/delete-contents-on-destroy: "true" 
@@ -54,3 +53,87 @@ spec:
       sourceFormat: CSV
       sourceUris:
         - "gs://cloud-samples-data/bigquery/census/data/adult.data.csv"
+
+###sample bq table with default encryption
+---
+apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
+  kind: BigQueryTable
+  metadata:
+    name: bq-datatable-name-encypted-project-id # kpt-set: ${bq-datatable-name}-encrypted-${project-id}
+    namespace: project-namespace # kpt-set: ${project-namespace}
+    annotations:
+      cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
+      cnrm.cloud.google.com/project-id: my-project-id # kpt-set: ${project-id}
+  spec:
+    friendlyName: bigquerytableencrypted
+    description: "Bigquery encrypted table"
+    datasetRef:
+      name: bq-dataset-nameproject-number # kpt-set: ${bq-dataset-name}${project-number}
+      namespace: project-namespace # kpt-set: ${project-namespace}
+    schema: |
+      [
+        {
+          "name": "route_id",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "service_id",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "trip_id",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "trip_headsign",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "direction_id",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "block_id",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },{
+          "name": "shape_id",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        }
+      ]
+
+---
+ apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
+  kind: BigQueryJob
+  metadata:
+    labels:
+      label-one: "value-one"
+    # BigQueryJobs cannot be deleted from GCP, so you must use a new unique name
+    # if you want to create a new job, otherwise Config Connector will try to
+    # acquire the job with the given name.
+    name: bigqueryjob-project-id # kpt-set: bigqueryjob-${project-id}
+    namespace: project-namespace # kpt-set: ${project-namespace}
+    annotations:
+      cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
+      cnrm.cloud.google.com/project-id: my-project-id # kpt-set: ${project-id}
+  spec:
+    location: "US"
+    jobTimeoutMs: "600000"
+    copy:
+      sourceTables:
+        - tableRef:
+            name: "bigquery-public-data.new_york_subway.trips"
+      destinationTable:
+        tableRef:
+          name: bq-datatable-name-encypted-project-id # kpt-set: ${bq-datatable-name}-encrypted-${project-id}
+      destinationEncryptionConfiguration:
+        kmsKeyRef:
+          name: bq-table-key-project-id # kpt-set: bq-table-key-${project-id}
+          namespace: project-namespace # kpt-set: ${project-namespace}
+      writeDisposition: "WRITE_APPEND"

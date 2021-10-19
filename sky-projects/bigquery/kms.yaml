@@ -72,3 +72,21 @@ spec:
     - role: roles/cloudkms.cryptoKeyEncrypterDecrypter
       members:
         - member: serviceAccount:bq-project-number@bigquery-encryption.iam.gserviceaccount.com # kpt-set: serviceAccount:bq-${project-number}@bigquery-encryption.iam.gserviceaccount.com
+---
+apiVersion: iam.cnrm.cloud.google.com/v1beta1
+kind: IAMPartialPolicy
+metadata: # kpt-merge: config-control/logging-sa-iam-permissions
+  name: table-kms-binding-project-id # kpt-set: table-kms-binding-${project-id}
+  namespace: project-namespace # kpt-set: ${project-namespace}
+  annotations:
+    cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
+spec:
+  resourceRef:
+    apiVersion: kms.cnrm.cloud.google.com/v1beta1
+    kind: KMSCryptoKey
+    name: bq-table-key-project-id # kpt-set: bq-table-key-${project-id}
+    namespace: project-namespace # kpt-set: ${project-namespace}
+  bindings:
+    - role: roles/cloudkms.cryptoKeyEncrypterDecrypter
+      members:
+        - member: serviceAccount:bq-project-number@bigquery-encryption.iam.gserviceaccount.com # kpt-set: serviceAccount:bq-${project-number}@bigquery-encryption.iam.gserviceaccount.com

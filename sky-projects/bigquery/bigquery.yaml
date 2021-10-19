@@ -133,8 +133,9 @@ spec:
       destinationTable:
         tableRef:
           name: bq-datatable-name-encypted-project-id # kpt-set: ${bq-datatable-name}-encrypted-${project-id}
-      destinationEncryptionConfiguration:
-        kmsKeyRef:
-          name: bq-table-key-project-id # kpt-set: bq-table-key-${project-id}
-          namespace: project-namespace # kpt-set: ${project-namespace}
+      ### uncomment out if you use table kms key, if no encryption specified, will use the dataset kms key by default
+      #destinationEncryptionConfiguration:
+      #  kmsKeyRef:
+      #    name: bq-table-key-project-id # kpt-set: bq-table-key-${project-id}
+      #    namespace: project-namespace # kpt-set: ${project-namespace}
       writeDisposition: "WRITE_APPEND"

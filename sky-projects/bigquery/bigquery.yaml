@@ -56,15 +56,16 @@ spec:
 
 ###sample bq table with default encryption
 ---
+---
 apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
-  kind: BigQueryTable
-  metadata:
+kind: BigQueryTable
+metadata:
     name: bq-datatable-name-encypted-project-id # kpt-set: ${bq-datatable-name}-encrypted-${project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
     annotations:
       cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
       cnrm.cloud.google.com/project-id: my-project-id # kpt-set: ${project-id}
-  spec:
+spec:
     friendlyName: bigquerytableencrypted
     description: "Bigquery encrypted table"
     datasetRef:
@@ -109,9 +110,9 @@ apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
       ]
 
 ---
- apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
-  kind: BigQueryJob
-  metadata:
+apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
+kind: BigQueryJob
+metadata:
     labels:
       label-one: "value-one"
     # BigQueryJobs cannot be deleted from GCP, so you must use a new unique name
@@ -122,13 +123,13 @@ apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
     annotations:
       cnrm.cloud.google.com/blueprint: cnrm/landing-zone:log-export/v0.4.0
       cnrm.cloud.google.com/project-id: my-project-id # kpt-set: ${project-id}
-  spec:
+spec:
     location: "US"
     jobTimeoutMs: "600000"
     copy:
       sourceTables:
         - tableRef:
-            name: "bigquery-public-data.new_york_subway.trips"
+            external: "projects/bigquery-public-data/datasets/new_york_subway/tables/trips"
       destinationTable:
         tableRef:
           name: bq-datatable-name-encypted-project-id # kpt-set: ${bq-datatable-name}-encrypted-${project-id}

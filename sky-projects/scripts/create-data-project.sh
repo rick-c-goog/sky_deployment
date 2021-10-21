@@ -2,6 +2,7 @@
 deployment_dir=$HOME/source-repo/sky-projects
 export project_id=sky-data-$RANDOM
 export sky_team_name=sky-credit-risk
+export sky_team_folder_id=342025906281
 export billing_account_id=XXXX-XXX-XXX
 export project_namespace=sky-credit-risk
 export projects_namespace=projects

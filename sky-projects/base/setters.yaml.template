@@ -5,10 +5,12 @@ metadata:
 data:
   project-id: ${project_id}
   sky-team-name: ${sky_team_name}
+  sky-team-name: ${sky_team_name}
   billing-account-id: ${billing_account_id}
   project-namespace: ${project_namespace}
   projects-namespace: ${projects_namespace}
   system-admin-group: ${system_admin_group}
+  sky-team-folder-id: ${system_team_folder_id}
   
 
 

@@ -28,4 +28,4 @@ spec:
   folderRef:
     #external: "12345" # kpt-set: ${did-folder-id}
     name: folder_name # kpt-set: ${sky-team-name}
-    namespace: hiearchy
+    namespace: hierarchy

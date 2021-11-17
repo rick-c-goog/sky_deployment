@@ -19,10 +19,11 @@ metadata: # kpt-merge: projects/project-id
   annotations:
     cnrm.cloud.google.com/auto-create-network: "false"
     cnrm.cloud.google.com/blueprint: cnrm/landing-zone:project/v0.4.0
+  labels:
+      deploymentid: deplolyment-id # kpt-set: ${sky-team-name}
 spec:
   name: project-id # kpt-set: ${project-id}
   billingAccountRef:
     external: "AAAAAA-BBBBBB-CCCCCC" # kpt-set: ${billing-account-id}
   folderRef:
-    name: name.of.folder # kpt-set: ${sky-team-name}
-    namespace: hierarchy
+    external: "12345" # kpt-set: ${did-folder-id}

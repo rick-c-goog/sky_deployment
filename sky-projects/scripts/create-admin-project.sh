@@ -1,8 +1,8 @@
 ####set environment vairables for setters file
 deployment_dir=$HOME/source-repo/sky-projects
-export project_id=sky-data-$RANDOM
-export sky_team_name=sky-credit-risk
-export did_folder_id=705548959577
+export deployment_id=did-$RANDOM
+export project_id=sky-data-$deployment_id
+export did_folder_id=561366432738
 export billing_account_id=XXXX-XXX-XXX
 export project_namespace=sky-credit-risk
 export projects_namespace=projects

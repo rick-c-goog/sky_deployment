@@ -24,7 +24,7 @@ do
   sleep 10
   totalWait=$(( $totalWait + 10 ))
   status=$(kubectl get  project ${project_id} -n projects -o json | jq '.status.conditions[0].status')
-  if [[ -n $status ]];  then
+  if [[ $status == ""True"" ]];  then
       echo $status
       break
   fi
@@ -63,7 +63,7 @@ do
     sleep 10
     totalWait=$(( $totalWait + 10 ))
     status=$(kubectl get  project ${project_id} -n projects -o json | jq '.status.conditions[0].status')
-    if [[ -n $status ]];  then
+    if [[ $status == ""True"" ]];  then
       echo $status
       break
     fi

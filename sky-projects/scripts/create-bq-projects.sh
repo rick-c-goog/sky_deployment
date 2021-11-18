@@ -26,9 +26,9 @@ git commit -m "create project project id: $project_id"
 git push
 
 ####2. Create BigQuery compute projects
-totSlotProjects=3
+totSlotProjects=3 #totoal number of slot projects to be created
 countProject=0
-while [ $x -lt  $numSlotProjects]
+while [ $x -lt  $totSlotProjects ]
 do
    export project_id=sky-job-$deployment_id-$countProject
    ##Run test scripts to create compute job projects

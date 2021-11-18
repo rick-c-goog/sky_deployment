@@ -10,13 +10,28 @@ cd $deployment_dir
 git add .
 git commit -m "create project project id: $project_id"
 git push
-#some stuff need project number, maybe not be available during provisioning time
-sleep 180
+
 ####1. Create BigQuery data storage project
 cd $deployment_dir/$project_id
 kpt pkg get $source_repo/sky-projects/bigquery@main ./bigquery
 cd bigquery
 gcloud config set project $management_project_id
+
+totalWait=0
+while [ $totalWait -le 300 ]
+do
+  sleep 10
+  totalWait=$(( $totalWait + 10 ))
+  status=$(kubectl get  project ${project_id} -n projects -o json | jq '.status.conditions[0].type')
+  if [ "$status" -eq "Ready" ]; then
+      break
+  fi
+done
+if [ "$status" -ne "Ready" ]; then
+      ech "There is issue to create project, check kcc project status"
+      exit 
+fi
+
 export project_number=$(gcloud projects describe ${project_id} --format='get(projectNumber)')
 
 envsubst < "./setters.yaml.template" >  "setters.yaml"
@@ -39,15 +54,29 @@ do
    git add .
    git commit -m "create project project id: $project_id"
    git push
-
+   
    ##wait for project number available
-   sleep 180
+   totalWait=0
+   while [ $totalWait -le 300 ]
+   do
+     sleep 10
+     totalWait=$(( $totalWait + 10 ))
+     status=$(kubectl get  project ${project_id} -n projects -o json | jq '.status.conditions[0].type')
+     if [ "$status" -eq "Ready" ]; then
+      break
+     fi
+   done
+   if [ "$status" -ne "Ready" ]; then
+      ech "There is issue to create project, check kcc project status"
+      exit 
+   fi
+   
    cd $deployment_dir/$project_id
    kpt pkg get $source_repo/sky-projects/job@main ./job
 
    cd job
    gcloud config set project $management_project_id
-
+   
    export project_number=$(gcloud projects describe ${project_id} --format='get(projectNumber)')
    envsubst < "./setters.yaml.template" >  "setters.yaml"
 

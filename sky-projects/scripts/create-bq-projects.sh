@@ -22,18 +22,17 @@ while [ $totalWait -le 300 ]
 do
   sleep 10
   totalWait=$(( $totalWait + 10 ))
-  status=$(kubectl get  project ${project_id} -n projects -o json | jq '.status.conditions[0].type')
-  if [ "$status" -eq "Ready" ]; then
+  status=$(kubectl get  project ${project_id} -n projects -o json | jq '.status.conditions[0].status')
+  if [ "$status" = "True" ]; then
       break
   fi
 done
-if [ "$status" -ne "Ready" ]; then
+if [ "$status" = "True" ]; then
       ech "There is issue to create project, check kcc project status"
       exit 
 fi
-
-export project_number=$(gcloud projects describe ${project_id} --format='get(projectNumber)')
-
+#export project_number=$(gcloud projects describe ${project_id} --format='get(projectNumber)')
+export project_number=$(kubectl get  project ${project_id} -n projects -o json | jq '.status.number')
 envsubst < "./setters.yaml.template" >  "setters.yaml"
 cd $deployment_dir/$project_id
 git add .
@@ -59,25 +58,28 @@ do
    totalWait=0
    while [ $totalWait -le 300 ]
    do
-     sleep 10
-     totalWait=$(( $totalWait + 10 ))
-     status=$(kubectl get  project ${project_id} -n projects -o json | jq '.status.conditions[0].type')
-     if [ "$status" -eq "Ready" ]; then
+    sleep 10
+    totalWait=$(( $totalWait + 10 ))
+    status=$(kubectl get  project ${project_id} -n projects -o json | jq '.status.conditions[0].status')
+    if [ "$status" = "True" ]; then
       break
-     fi
+    fi
    done
-   if [ "$status" -ne "Ready" ]; then
+   if [ "$status" = "True" ]; then
       ech "There is issue to create project, check kcc project status"
       exit 
    fi
+#export project_number=$(gcloud projects describe ${project_id} --format='get(projectNumber)')
+   export project_number=$(kubectl get  project ${project_id} -n projects -o json | jq '.status.number')
+ 
    
    cd $deployment_dir/$project_id
    kpt pkg get $source_repo/sky-projects/job@main ./job
 
    cd job
-   gcloud config set project $management_project_id
+   #gcloud config set project $management_project_id
    
-   export project_number=$(gcloud projects describe ${project_id} --format='get(projectNumber)')
+   #export project_number=$(gcloud projects describe ${project_id} --format='get(projectNumber)')
    envsubst < "./setters.yaml.template" >  "setters.yaml"
 
    cd $deployment_dir

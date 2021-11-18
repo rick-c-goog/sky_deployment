@@ -30,7 +30,7 @@ do
   fi
 done
 if [[ -z $status ]];  then
-      ech "There is issue to create project, check kcc project status"
+      echo "There is issue to create project, check kcc project status"
       exit 
 fi
 #export project_number=$(gcloud projects describe ${project_id} --format='get(projectNumber)')

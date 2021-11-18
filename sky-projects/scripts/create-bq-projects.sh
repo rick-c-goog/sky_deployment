@@ -18,16 +18,18 @@ cd bigquery
 gcloud config set project $management_project_id
 
 totalWait=0
-while [ $totalWait -le 300 ]
+status=''
+while [ $totalWait -le 180 ]
 do
   sleep 10
   totalWait=$(( $totalWait + 10 ))
   status=$(kubectl get  project ${project_id} -n projects -o json | jq '.status.conditions[0].status')
-  if [ "$status" = "True" ]; then
+  if [[ -n $status ]];  then
+      echo $status
       break
   fi
 done
-if [ "$status" = "True" ]; then
+if [[ -z $status ]];  then
       ech "There is issue to create project, check kcc project status"
       exit 
 fi
@@ -54,21 +56,23 @@ do
    git commit -m "create project project id: $project_id"
    git push
    
-   ##wait for project number available
-   totalWait=0
+   ##watotalWait=0
+   status=''
    while [ $totalWait -le 300 ]
    do
     sleep 10
     totalWait=$(( $totalWait + 10 ))
     status=$(kubectl get  project ${project_id} -n projects -o json | jq '.status.conditions[0].status')
-    if [ "$status" = "True" ]; then
+    if [[ -n $status ]];  then
+      echo $status
       break
     fi
    done
-   if [ "$status" = "True" ]; then
+   if [[ -z $status ]];  then
       ech "There is issue to create project, check kcc project status"
       exit 
    fi
+ 
 #export project_number=$(gcloud projects describe ${project_id} --format='get(projectNumber)')
    export project_number=$(kubectl get  project ${project_id} -n projects -o json | jq '.status.number')
  

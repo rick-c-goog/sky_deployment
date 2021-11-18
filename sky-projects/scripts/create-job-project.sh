@@ -1,15 +1,5 @@
 ####set following variables
-deployment_dir=$HOME/source-repo/sky-projects
-export deployment_id=did-$RANDOM
-export project_id=sky-data-$deployment_id
-export did_folder_id=561366432738
-export billing_account_id=XXX-XXX-XXX
-export project_namespace=sky-credit-risk
-export projects_namespace=projects
-export data_job_group="data-job@rickruguichen.altostrat.com" 
-export system_admin_group="gcp-org-admins@rickruguichen.altostrat.com"
-source_repo=https://githubtoken@github.com/rick-c-goog/sky_deployment.git
-management_project_id=rick-multi-tenancy
+export project_id=sky-job-$deployment_id
 ##Run test scripts to create compute job projects
 cd $deployment_dir
 kpt pkg get $source_repo/sky-projects/base@main ./$project_id

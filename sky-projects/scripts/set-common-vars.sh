@@ -1,0 +1,14 @@
+deployment_dir=$HOME/source-repo/sky-projects
+export deployment_id=did-$RANDOM
+export did_folder_id=561366432738
+export billing_account_id=XXXX-XXX-XXX
+export project_namespace=sky-credit-risk
+export projects_namespace=projects
+export data_admin_group="data-admin@rickruguichen.altostrat.com"
+export data_editor_group="data-editor@rickruguichen.altostrat.com"
+export data_viewer_group="data-viewer@rickruguichen.altostrat.com"
+export data_job_group="data-job@rickruguichen.altostrat.com"
+export data_location=us
+export system_admin_group="gcp-org-admins@rickruguichen.altostrat.com"
+source_repo=https://githubtoken@github.com/rick-c-goog/sky_deployment.git
+management_project_id=rick-multi-tenancy

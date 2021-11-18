@@ -15,8 +15,7 @@ git push
 cd $deployment_dir/$project_id
 kpt pkg get $source_repo/sky-projects/bigquery@main ./bigquery
 cd bigquery
-gcloud config set project $management_project_id
-
+#check for status for of project, wait till is ready
 totalWait=0
 status=''
 while [ $totalWait -le 180 ]
@@ -24,7 +23,7 @@ do
   sleep 10
   totalWait=$(( $totalWait + 10 ))
   status=$(kubectl get  project ${project_id} -n ${projects_namespace} -o json | jq '.status.conditions[0].status')
-  if [[ $status == ""True"" ]];  then
+  if [[ "$status" == ""True"" ]];  then
       echo $status
       break
   fi
@@ -33,8 +32,8 @@ if [[ -z $status ]];  then
       echo "There is issue to create project, check kcc project status"
       exit 
 fi
-#export project_number=$(gcloud projects describe ${project_id} --format='get(projectNumber)')
-export project_number=$(kubectl get  project ${project_id} -n  ${projects_namespace}-o json | jq '.status.number')
+#get project_number from kubernetes
+export project_number=$(kubectl get  project ${project_id} -n ${projects_namespace} -o json | jq '.status.number')
 envsubst < "./setters.yaml.template" >  "setters.yaml"
 cd $deployment_dir/$project_id
 git add .
@@ -63,7 +62,7 @@ do
     sleep 10
     totalWait=$(( $totalWait + 10 ))
     status=$(kubectl get  project ${project_id} -n ${projects_namespace} -o json | jq '.status.conditions[0].status')
-    if [[ $status == ""True"" ]];  then
+    if [[ "$status" == ""True"" ]];  then
       echo $status
       break
     fi

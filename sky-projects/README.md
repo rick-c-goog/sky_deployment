@@ -27,7 +27,8 @@ Setters:
 | Setter | Description |
 |    ----   | ----   |
 |project-id  |project id |
-|sky-team-name |parent folder where project be created |
+|deployment-id |deployment-id did |
+|did-folder-id |team parent folder id |
 |billing-account-id  |billing account id |
 |project-namespace  | existing namespace to hold project resources|
 |projects-namespace | existing namespace to hold project, projects namespace or parent folder namespace |
@@ -70,14 +71,14 @@ Setters:
 
 ## Usage:
 There are shell scripts under sky-poroject/scripts folder,to create different type of projects: 
-1. create-data-project.sh
-2. create-job-prject.sh
+1. create-admin-project.sh
+2. create-project-set.sh
 3. cereate-slotadmin-project.sh
 
 Make to modify the scripts' environment variables to match your environemnt. 
 Assumption for the scripts:
 1. there is an exisitng directory to hold your source repo, and can kick off the blueprint cloud build job after git code push
-2. have GCP sdk installed
+2. have GCP sdk, jq, kubectl installed
 3. gcloud config set project management_project ( use this project to access the project created)
 4. each project have 2 steps, first step to commit and push code to create base project. And it will wait for 3 minutes to get the project number of base project provisioned through the management project, this is necessary to retrieve project number. The second step will get the add-on package on top of the base project and do another code commit push, kick off the cloud build pipeline job. 
 5. each step use envsust command to override the setters.yaml.template file

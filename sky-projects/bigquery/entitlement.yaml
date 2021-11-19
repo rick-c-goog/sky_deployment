@@ -35,7 +35,8 @@ spec:
   resourceRef:
     apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
     kind: BigQueryTable
-    external: projects/project-id/datasets/bq-dataset-nameproject-number/tables/bq-datatable-name-encypted-project-id # kpt-set: projects/${project-id}/datasets/${bq-dataset-name}${project-number}/tables/${bq-datatable-name}-encrypted-${project-id}
+    name: bq-datatable-name-encypted-project-id # kpt-set: ${bq-datatable-name}-encrypted-${project-id}
+    namespace: project-namespace # kpt-set: ${project-namespace}
   bindings:
     - role: projects/project-id/roles/entitle-role-sample1-project-number # kpt-set: projects/${project-id}/roles/entitle-role-sample1-${project-number}
       members:
@@ -52,7 +53,8 @@ spec:
   resourceRef:
     apiVersion: bigquery.cnrm.cloud.google.com/v1beta1
     kind: BigQueryTable
-    external: projects/project-id/datasets/bq-dataset-nameproject-number/tables/bq-datatable-name-external-project-id # kpt-set: projects/${project-id}/datasets/${bq-dataset-name}${project-number}/tables/${bq-datatable-name}-external-${project-id}
+    name: bq-datatable-name-external-project-id # kpt-set: ${bq-datatable-name}-external-${project-id}
+    namespace: project-namespace # kpt-set: ${project-namespace}
   bindings:
     - role: projects/project-id/roles/entitle-role-sample1-project-number # kpt-set: projects/${project-id}/roles/entitle-role-sample1-${project-number}
       members:

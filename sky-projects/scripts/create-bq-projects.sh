@@ -39,7 +39,7 @@ cd $deployment_dir/$project_id
 git add .
 git commit -m "create project project id: $project_id"
 git push
-
+sleep 10
 ####2. Create BigQuery compute projects
 countProject=1
 while [ $countProject -le 3 ]
@@ -55,9 +55,9 @@ do
    git commit -m "create project project id: $project_id"
    git push
    
-   ##watotalWait=0
+   totalWait=0
    status=''
-   while [ $totalWait -le 300 ]
+   while [ $totalWait -le 180 ]
    do
     sleep 10
     totalWait=$(( $totalWait + 10 ))
@@ -68,7 +68,7 @@ do
     fi
    done
    if [[ -z $status ]];  then
-      ech "There is issue to create project, check kcc project status"
+      echo "There is issue to create project, check kcc project status"
       exit 
    fi
  
@@ -89,7 +89,7 @@ do
    git add .
    git commit -m "create slot project project id: $project_id"
    git push
-   
+   sleep 10
    countProject=$(( $countProject + 1 ))
 done
 

@@ -11,4 +11,3 @@ export data_job_group="data-job@rickruguichen.altostrat.com"
 export data_location=us
 export system_admin_group="gcp-org-admins@rickruguichen.altostrat.com"
 source_repo=https://githubtoken@github.com/rick-c-goog/sky_deployment.git
-management_project_id=rick-multi-tenancy

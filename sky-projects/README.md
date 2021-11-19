@@ -73,7 +73,7 @@ Setters:
 There are shell scripts under sky-poroject/scripts folder,to create different type of projects: 
 1. create-admin-project.sh
 2. create-project-set.sh
-3. cereate-slotadmin-project.sh
+3. set-common-vars.sh
 
 Make to modify the scripts' environment variables to match your environemnt. 
 Assumption for the scripts:

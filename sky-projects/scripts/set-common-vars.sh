@@ -24,6 +24,7 @@ export data_admin_group="data-admin@rickruguichen.altostrat.com"
 export data_editor_group="data-editor@rickruguichen.altostrat.com"
 export data_viewer_group="data-viewer@rickruguichen.altostrat.com"
 export data_job_group="data-job@rickruguichen.altostrat.com"
+export data_reservation_group="data-reservation@rickruguichen.altostrat.com"
 export data_entitlement_group="data-entitlement@rickruguichen.altostrat.com"
 export data_location=us
 export system_admin_group="gcp-org-admins@rickruguichen.altostrat.com"

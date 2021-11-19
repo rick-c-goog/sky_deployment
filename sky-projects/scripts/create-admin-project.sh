@@ -1,6 +1,3 @@
-####set environment vairables for setters file
-source set-common-vars.sh
-export project_id=sky-admin-$deployment_id
 # Copyright 2021 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,6 +12,10 @@ export project_id=sky-admin-$deployment_id
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ###test to create data admin project
+####set environment vairables for setters file
+source set-common-vars.sh
+export project_id=sky-admin-$deployment_id
+
 cd $deployment_dir
 kpt pkg get $source_repo/sky-projects/base@main ./$project_id
 cd $project_id
@@ -44,7 +45,9 @@ if [[ -z $status ]];  then
 fi
 #get project_number from kubernetes
 export project_number=$(kubectl get  project ${project_id} -n ${projects_namespace} -o json | jq '.status.number')
-
+cd $deployment_dir/$project_id
+kpt pkg get $source_repo/sky-projects/slotadmin@main ./slotadmin
+cd slotadmin
 envsubst < "./setters.yaml.template" >  "setters.yaml"
 
 cd $deployment_dir

@@ -10,7 +10,7 @@ metadata:
     annotations:
       # Replace ${PROJECT_ID?} with your project ID
       cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
-    name: entitle-role-sample1-project-number # kpt-set: entitle-role-sample1-${project-number}
+    name: entitlerolesample1project-number # kpt-set: entitlerolesample1${project-number}
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     title: Sample table level Custom Role
@@ -38,7 +38,7 @@ spec:
     name: bq-datatable-name-encypted-project-id # kpt-set: ${bq-datatable-name}-encrypted-${project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
   bindings:
-    - role: projects/project-id/roles/entitle-role-sample1-project-number # kpt-set: projects/${project-id}/roles/entitle-role-sample1-${project-number}
+    - role: projects/project-id/roles/entitlerolesample1project-number # kpt-set: projects/${project-id}/roles/entitlerolesample1${project-number}
       members:
         - member: "group:data-entitlement-group" # kpt-set: group:${data-entitlement-group}
 ---
@@ -56,7 +56,7 @@ spec:
     name: bq-datatable-name-external-project-id # kpt-set: ${bq-datatable-name}-external-${project-id}
     namespace: project-namespace # kpt-set: ${project-namespace}
   bindings:
-    - role: projects/project-id/roles/entitle-role-sample1-project-number # kpt-set: projects/${project-id}/roles/entitle-role-sample1-${project-number}
+    - role: projects/project-id/roles/entitlerolesample1project-number # kpt-set: projects/${project-id}/roles/entitlerolesample1${project-number}
       members:
         - member: "group:data-entitlement-group" # kpt-set: group:${data-entitlement-group}
 

@@ -19,7 +19,8 @@ metadata: # kpt-merge: /setters
 data:
   project-id: ${project_id}
   #project number, resource identifier can not append project-id
-  project-number: ${project_number}
+  #project-number: ${project_number}
+  projects-namespace: ${projects_namespace}
   #full email address for data  group
   data-reservation-group: "${data_reservation_group}"
 

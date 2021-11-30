@@ -71,16 +71,15 @@ Setters:
 
 ## Usage:
 There are shell scripts under sky-poroject/scripts folder,to create different type of projects: 
-1. create-admin-project.sh
-2. create-project-set.sh
-3. set-common-vars.sh
+1. create-admin-project.sh  create bq admin project, 
+2. create-project-set.sh  create bq project set( includes bq data project and compute projects)
+3. set-common-vars.sh  shared common variables passing to setters.yaml.templates
 
-Make to modify the scripts' environment variables to match your environemnt. 
+Make to modify the set-common-vars.sh environment variables to match your environemnt. 
 Assumption for the scripts:
 1. there is an exisitng directory to hold your source repo, and can kick off the blueprint cloud build job after git code push
-2. have GCP sdk, jq, kubectl installed
-3. gcloud config set project management_project ( use this project to access the project created)
-4. each project have 2 steps, first step to commit and push code to create base project. And it will wait for 3 minutes to get the project number of base project provisioned through the management project, this is necessary to retrieve project number. The second step will get the add-on package on top of the base project and do another code commit push, kick off the cloud build pipeline job. 
+2. have jq, kubectl installed, access to kcc cluster
+3. each project have 2 steps, first step to commit and push code to create base project. And it will wait for 3 minutes to get the project number of base project provisioned through the management project, this is necessary to retrieve project number. The second step will get the add-on package on top of the base project and do another code commit push, kick off the cloud build pipeline job. 
 5. each step use envsust command to override the setters.yaml.template file
 Note: feel free to use other mechanism to update the setters values and run the packages,  
 

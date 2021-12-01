@@ -4,16 +4,16 @@ metadata:
     annotations:
       # Replace ${PROJECT_ID?} with your project ID
       cnrm.cloud.google.com/project-id: "project_id" # kpt-set: ${project-id}
-      config.k8s.io/apply-time-mutation: |
-       - sourceRef:
-           group: resourcemanager.cnrm.cloud.google.com
-           kind: Project
-           name: project-id # kpt-set: ${project-id}
-           namespace: projects-namespace # kpt-set: ${projects-namespace}
-         sourcePath: $.status.number
-         targetPath: $.spec.resourceID
-         token: ${project-number}
-    name: datareservationroleproject-id # kpt-set: datareservationrole${project-id}
+      #config.k8s.io/apply-time-mutation: |
+      # - sourceRef:
+      #     group: resourcemanager.cnrm.cloud.google.com
+      #     kind: Project
+      #     name: project-id # kpt-set: ${project-id}
+      #     namespace: projects-namespace # kpt-set: ${projects-namespace}
+      #   sourcePath: $.status.number
+      #   targetPath: $.spec.resourceID
+      #   token: ${project-number}
+    name: datajobroleproject-number # kpt-set: datajobrole${project-number}    
     namespace: project-namespace # kpt-set: ${project-namespace}
 spec:
     title: Slot Reservation Custom Role

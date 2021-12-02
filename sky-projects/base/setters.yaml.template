@@ -4,11 +4,7 @@ metadata:
   name: setters
 data:
   project-id: ${project_id}
-  deployment-id: ${deployment_id}
-  did-folder-id: ${did_folder_id}
-  billing-account-id: ${billing_account_id}
   project-namespace: ${project_namespace}
-  projects-namespace: ${projects_namespace}
   system-admin-group: ${system_admin_group}
 
   

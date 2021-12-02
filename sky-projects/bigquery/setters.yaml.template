@@ -35,5 +35,5 @@ data:
   #full email address for data entitlement sample group
   data-entitlement-group: "${data_entitlement_group}"
   # dataset location, us can be default
-  data-location: ${data_location}
+  data-location: us
   

@@ -79,15 +79,15 @@ Prerequisistes:
 3. Need one repo sync configured for each project namespace, need get gcr deployment-repo url and have access permission to pull and push templates into the repo. 
 4. Each type of package will need different type of user groups so that IAM roles will be assigned to them, the group email address needs to set in package setters files
 Group requirements: 
-| Package | Group |  
-|    ----   | ----   |
-|base |system-admin-group |
-|data | data-admin-group|
-|data| data-editor-group|
-|data|data-viewer-group |
-|data|data-job-group |
-|job |data-job-group |
-|admin|data-reservation-group |
+| Package | Group | Description | 
+|    ----   | ----   | ----   |
+|base |system-admin-group |group with project owner role |
+|data | data-admin-group|BigQuery Data Admin group |
+|data| data-editor-group|BigQuery Data Editor group |
+|data|data-viewer-group |BigQuery Data Viewer group |
+|data|data-job-group |BigQuery Run Job group |
+|job |data-job-group |same as data project, BigQuery Run job group |
+|admin|data-reservation-group |BigQuery Slot Admin group |
 
 
 Sample Steps to apply packages:

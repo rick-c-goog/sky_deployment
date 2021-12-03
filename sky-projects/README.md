@@ -29,6 +29,15 @@ Setters:
 |project-id  |project id |
 |project-namespace  | existing namespace to hold project resources|
 |system-admin-group |full email address for system adim group |
+
+Template Files in base folder:
+| Templates| Description |
+|    ----   | ----   |
+| auditlog.yaml| enable audit logs for all services|
+|policybinding.yaml| IAM partial policy binding, assign roles/owner roles to system-admin-group |
+|project.yaml.create| template to create new project, restore this file needs to create project|
+|service-api.yaml| enable default google apis(logging, monitoring) |
+
   
 ### data:
 Add on package for BigQuery sample dataset, and sample table
@@ -48,6 +57,18 @@ Setters:
 |data-viewer-group | full email address for data viewer group |
 |data-job-group |full email address for data job group |
 
+
+Template Files(bigquery folder):
+| Templates| Description |
+|    ----   | ----   |
+|bigquery.yaml  |sample BigQuery dataset and tables, sample BigQuery job to load data|
+|custom-role.yaml  | Define BigQuery Data Admin, Data Editor, Data Viewer customer roles, and BigQuery permissions|
+|entitlement.yaml |sample table level entitlement role, associate IAM custom role and associate to table level permissions |
+|kms.yaml |kms keyring, kms key, IAM binding policies|
+|policybinding.yaml | IAM binding policies, between data admin, editor, viewer custom roles to respetive groups|
+|service-account..yaml  |reserved 3 service accounts, can be used for web identity federation |
+|service-api..yaml  |enabled required google api for BigQuery data project|
+
 ### job
 Add on package for compute/job project, 
 Only include one user group to access the project 
@@ -58,6 +79,15 @@ Setters:
 |project-number | Project number from base pakcage execution|
 |project-namespace | existing namespace to hold project resources|
 |data-job-group|full email address for data job group, this group need to be in both data and job projects |
+
+
+Template Files( job folder):
+| Templates| Description |
+|    ----   | ----   |
+|custom-role.yaml  |IAM custom role to run bigquery jobs |
+|policybinding.yaml| IAM partial policy binding, between IAM custom role with run job permissions and respective assigned user group |
+|service-api..yaml  |enabled required google api to run BigQuery jobs |
+
 ### slotadmin
 Add package for data admin project, with commitment purchase, reservation management. 
 Setters:
@@ -67,6 +97,15 @@ Setters:
 |project-number | Project number from base pakcage execution|
 |project-namespace | existing namespace to hold project resources|
 |data-reservation-group |full email address for data admin group |
+
+
+Template Files( slotadmin folder):
+| Templates| Description |
+|    ----   | ----   |
+|custom-role.yaml  |IAM custom role to for BigQuery slot admin |
+|policybinding.yaml| IAM partial policy binding, between IAM custom role with slot admin permissions and respective assigned user group |
+|service-api..yaml  |enabled required google api for slot admin project |
+
 
 ## Usage:
 ### How to use packages when projects created from other workflow:

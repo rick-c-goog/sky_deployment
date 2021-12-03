@@ -20,7 +20,7 @@ data:
   project-id: ${project_id}
   #project number, for resource identifier can not append project-id
   project-number: ${project_number}
-  #projects-namespace: ${projects_namespace}
+  project-namespace: ${project_namespace}
   #full email address for data admin group
   data-job-group: "${data_job_group}"
   

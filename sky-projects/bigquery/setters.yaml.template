@@ -19,6 +19,7 @@ metadata: # kpt-merge: /setters
 data:
   project-id: ${project_id}
   #project number, for kms enablement, and resource identifier can not append project-id
+  project-namespace: ${project_namespace}
   project-number: ${project_number}
   #bigquery dataset name
   bq-dataset-name: bqsampledataset

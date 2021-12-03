@@ -1,9 +1,9 @@
 # sky-projects
 
 ## Description
-KPT package to create BigQuery projects.
+KPT package for BigQuery projects.
 
-* 3 types of projects can  be created: data project, job/compute project, slot admin project
+* The packages can be applied to 3 types of proects: data project, job/compute project, slot admin project
 * Use base kpt package as start point to create all 3 types of projects, since it contains base level setup shared by all 3 types of projects. 
 * There are 3 sample scripts to test each type of project creation
 * The project can be created under specified existing namespace

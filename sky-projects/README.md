@@ -110,7 +110,7 @@ Template Files( slotadmin folder):
 ## Usage:
 ### How to use packages when projects created from other workflow:
 Prerequisistes:
-1. Need to provision empty GCP project outside current workflow, usually one project will match to one DID folder and one namespace in KCC cluster
+1. Need to provision 3 empty GCP projects outside current workflow, usually one project will match to one DID folder and one namespace in KCC cluster
 2. Get the following parameters related to the project:
     project-id
     project-number
